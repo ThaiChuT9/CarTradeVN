@@ -2,7 +2,6 @@ package com.cartradevn.cartradevn.services.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.services.entity.Vehicle;
 
 import java.util.List;
@@ -63,6 +62,4 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     // Tìm kiếm theo nhiều tiêu chí kết hợp
     List<Vehicle> findByBrandAndPriceBetween(String brand, Double minPrice, Double maxPrice);
     List<Vehicle> findByCityAndCondition(String city, String condition);
-
-    Page<Vehicle> findByUser(User user, Pageable pageable);
 }
