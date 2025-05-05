@@ -56,10 +56,8 @@ public class AuthService {
 
     public UserResponseDTO login(LoginDTO loginDTO) {
         // Find the user by username
-        User user = userRepo.findByUsername(loginDTO.getUsername());
-        if (user == null) {
-            throw new RuntimeException("Tên đăng nhập không tồn tại");
-        }
+        User user = userRepo.findByUsername(loginDTO.getUsername())
+            .orElseThrow(() -> new RuntimeException("Tên đăng nhập không tồn tại"));
 
         // Check if the password is correct
         if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPasswordHash())) {

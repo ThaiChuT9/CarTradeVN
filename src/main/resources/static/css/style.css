@@ -422,7 +422,7 @@ textarea.form-control {
 }
 
 .dark-layout .preloader:after {
-  background-image: url(../images/logo2.png);
+  background-image: url(../images/logo.svg);
 }
 
 .dark-layout .sticky-header {

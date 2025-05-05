@@ -3,6 +3,7 @@ package com.cartradevn.cartradevn.config;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,31 +12,39 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.cartradevn.cartradevn.administration.Enum.UserRole;
+import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
+import com.cartradevn.cartradevn.administration.entity.User;
+import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.administration.services.CustomUserDetailsService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
+    private final UserRepo userRepo;
 
-    public SecurityConfig(CustomUserDetailsService userDetailsService) {
+    @Autowired
+    public SecurityConfig(CustomUserDetailsService userDetailsService, UserRepo userRepo) {
         this.userDetailsService = userDetailsService;
+        this.userRepo = userRepo;
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-<<<<<<< HEAD
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/index-9", "/faq", 
                                "/login", "/register", 
-                               "../static/**", "../static/css/**", "/js/**", 
-                               "../static/images/**", "/fonts/**").permitAll()
+                               "/static/**", "/css/**", "/js/**", 
+                               "/images/**", "/fonts/**").permitAll()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/admin-dashboard/**", "/users-list/**",
                                "/admin-profile/**", "/users/edit/**",
@@ -95,44 +104,6 @@ public class SecurityConfig {
                 .expiredUrl("/login?expired=true")
             );
 
-=======
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register", "/static/**",
-                                "/css/**", "/js/**", "/images/**", "/fonts/**",
-                                "/api/v1/auth/**", "/index-9", "/faq")
-                        .permitAll()
-                        .requestMatchers("/dashboard/**").hasAnyRole("ADMIN, SELLER, BUYER")
-                        .requestMatchers("/admin-dashboard/**", "/users-list/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/api/v1/auth/login")
-                        .successHandler((request, response, authentication) -> {
-                            // Lấy authorities của user
-                            Set<String> roles = authentication.getAuthorities().stream()
-                                    .map(GrantedAuthority::getAuthority)
-                                    .collect(Collectors.toSet());
-                            
-                            // Chuyển hướng dựa trên role
-                            if (roles.contains("ROLE_ADMIN")) {
-                                response.sendRedirect("/admin-dashboard");
-                            } else {
-                                response.sendRedirect("/index-9");
-                            }
-                        }))
-                .logout(logout -> logout
-                        .logoutUrl("/api/v1/auth/logout")
-                        .logoutSuccessUrl("/login")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
-                        .permitAll())
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                        .invalidSessionUrl("/login")
-                        .maximumSessions(1)
-                        .maxSessionsPreventsLogin(false));
->>>>>>> parent of 2f6f795 (Merge pull request #6 from ThaiChuT9/thai_dev)
         return http.build();
     }
 

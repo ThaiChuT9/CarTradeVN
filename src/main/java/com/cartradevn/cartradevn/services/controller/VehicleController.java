@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,21 +15,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
 import com.cartradevn.cartradevn.services.VehicleException;
 import com.cartradevn.cartradevn.services.dto.VehicleDTO;
+import com.cartradevn.cartradevn.services.service.ImageService;
 import com.cartradevn.cartradevn.services.service.VehicleService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {
     private final VehicleService vehicleService;
+    private final ImageService imageService;
 
     @Autowired
-    public VehicleController(VehicleService vehicleService) {
+    public VehicleController(VehicleService vehicleService, ImageService imageService) {
         this.vehicleService = vehicleService;
+        this.imageService = imageService;
     }
 
     @GetMapping("/{id}")
@@ -70,8 +77,27 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<VehicleDTO> createVehicle(@Valid @RequestBody VehicleDTO vehicleDTO) {
+    public ResponseEntity<VehicleDTO> createVehicle(
+            @Valid @ModelAttribute VehicleDTO vehicleDTO,
+            @RequestParam(value = "images", required = false) MultipartFile[] images,
+            HttpSession session) {
         try {
+            // Get logged in user
+            UserResponseDTO user = (UserResponseDTO) session.getAttribute("user");
+            if (user == null) {
+                throw new VehicleException("User must be logged in to add vehicle");
+            }
+
+            // Set user ID
+            vehicleDTO.setUserId(user.getId());
+
+            // Handle image uploads
+            if (images != null && images.length > 0) {
+                // Save images and get URLs
+                List<String> imageUrls = imageService.saveImages(images);
+                vehicleDTO.setImageUrl(String.join(",", imageUrls));
+            }
+
             VehicleDTO created = vehicleService.createVehicle(vehicleDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(created);
         } catch (Exception e) {

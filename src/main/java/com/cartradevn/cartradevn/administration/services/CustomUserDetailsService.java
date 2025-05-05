@@ -22,10 +22,8 @@ public class CustomUserDetailsService implements UserDetailsService  {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
+        User user = userRepo.findByUsername(username)
+            .orElseThrow(() -> new UsernameNotFoundException("Tên đăng nhập không tồn tại: " + username));
         
         List<GrantedAuthority> authorities = new ArrayList<>();
         // Thêm prefix ROLE_ nếu chưa có

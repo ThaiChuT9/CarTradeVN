@@ -7,6 +7,8 @@ import com.cartradevn.cartradevn.services.dto.VehicleDTO;
 import com.cartradevn.cartradevn.services.entity.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import com.cartradevn.cartradevn.services.repository.VehicleRepo;
 
@@ -178,6 +180,22 @@ public class VehicleService {
             throw new VehicleException("Không thể xóa xe do ràng buộc dữ liệu");
         } catch (Exception e) {
             throw new VehicleException("Lỗi khi xóa xe: " + e.getMessage());
+        }
+    }
+
+    public Page<VehicleDTO> getVehiclesByUserId(Long id, PageRequest pageRequest) {
+        try {
+            // Check if user exists
+            User user = userRepo.findById(id)
+                .orElseThrow(() -> new VehicleException("User not found with id: " + id));
+    
+            // Get paginated vehicles for user
+            Page<Vehicle> vehiclePage = vehicleRepo.findByUser(user, pageRequest);
+    
+            // Convert to DTOs
+            return vehiclePage.map(this::convertToDTO);
+        } catch (Exception e) {
+            throw new VehicleException("Error getting vehicles for user: " + e.getMessage());
         }
     }
 }
