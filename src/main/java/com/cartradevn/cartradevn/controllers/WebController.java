@@ -246,4 +246,68 @@ public class WebController {
             return "redirect:/dashboard";
         }
     }
+
+    @GetMapping("/view-listings")
+    public String viewListings(
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String search) {
+        try {
+            Page<VehicleDTO> vehiclePage;
+            if (search != null && !search.trim().isEmpty()) {
+                vehiclePage = vehicleService.searchVehicles(search, PageRequest.of(page, size));
+            } else {
+                vehiclePage = vehicleService.getAllVehiclesPaged(PageRequest.of(page, size));
+            }
+
+            model.addAttribute("vehicles", vehiclePage.getContent());
+            model.addAttribute("currentPage", page);
+            model.addAttribute("totalPages", vehiclePage.getTotalPages());
+            model.addAttribute("totalItems", vehiclePage.getTotalElements());
+            model.addAttribute("search", search);
+
+            return "view-listings";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "view-listings";
+        }
+    }
+
+    @GetMapping("/vehicles/edit/{id}")
+    public String editVehicle(@PathVariable Long id, Model model) {
+        try {
+            VehicleDTO vehicle = vehicleService.getVehicleById(id);
+            model.addAttribute("vehicle", vehicle);
+            return "edit-listings";
+        } catch (Exception e) {
+            return "redirect:/view-listings?error=" + e.getMessage();
+        }
+    }
+
+    @PostMapping("/vehicles/update/{id}")
+    public String updateVehicle(@PathVariable Long id, 
+                              @ModelAttribute VehicleDTO vehicleDTO,
+                              RedirectAttributes redirectAttributes) {
+        try {
+            vehicleService.updateVehicle(id, vehicleDTO);
+            redirectAttributes.addFlashAttribute("success", "Vehicle updated successfully");
+            return "redirect:/view-listings";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/vehicles/edit/" + id;
+        }
+    }
+
+    @GetMapping("/vehicles/delete/{id}")
+    public String deleteVehicle(@PathVariable Long id,
+                              RedirectAttributes redirectAttributes) {
+        try {
+            vehicleService.deleteVehicle(id);
+            redirectAttributes.addFlashAttribute("success", "Vehicle deleted successfully");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/view-listings";
+    }
 }

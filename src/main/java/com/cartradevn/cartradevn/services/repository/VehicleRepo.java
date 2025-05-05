@@ -63,6 +63,6 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     // Tìm kiếm theo nhiều tiêu chí kết hợp
     List<Vehicle> findByBrandAndPriceBetween(String brand, Double minPrice, Double maxPrice);
     List<Vehicle> findByCityAndCondition(String city, String condition);
-
+    Page<Vehicle> findByNameContainingIgnoreCaseOrBrandContainingIgnoreCase(String name, String brand, Pageable pageable);
     Page<Vehicle> findByUser(User user, Pageable pageable);
 }

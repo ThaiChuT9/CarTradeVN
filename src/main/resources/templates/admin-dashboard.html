@@ -192,7 +192,13 @@
                     <li><a href="my-listings"><img src="/static/images/icons/dash3.svg" alt="">My Listings</a></li>
                     <li><a href="view-listings"><img src="/static/images/icons/dash2.svg" alt="">Vehicle listing</a></li>
                     <li><a href="profile"><img src="/static/images/icons/dash7.svg" alt="">My Profile</a></li>
-                    <li><a href="#"><img src="/static/images/icons/dash8.svg" alt="">Logout</a></li>
+                    <li>
+                        <form th:action="@{/api/v1/auth/logout}" method="post" style="display: inline;">
+                            <a href="#" onclick="this.closest('form').submit(); return false;">
+                                <img src="/static/images/icons/dash8.svg" alt="">Logout
+                            </a>
+                        </form>
+                    </li>
                 </ul>
             </div>
             <div class="content-column">
