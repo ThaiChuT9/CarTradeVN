@@ -47,6 +47,25 @@ public class VehicleController {
     public ResponseEntity<VehicleDTO> updateVehicle(
             @PathVariable Long id,
             @Valid @RequestBody VehicleDTO vehicleDTO) {
+        // Additional validation for new fields
+        if (vehicleDTO.getMileage() != null && vehicleDTO.getMileage() < 0) {
+            throw new VehicleException("Mileage cannot be negative");
+        }
+        
+        if (vehicleDTO.getTransmission() != null) {
+            String trans = vehicleDTO.getTransmission().toLowerCase();
+            if (!trans.matches("automatic|manual|cvt|semi-automatic")) {
+                throw new VehicleException("Invalid transmission type");
+            }
+        }
+        
+        if (vehicleDTO.getBodyStyle() != null) {
+            String style = vehicleDTO.getBodyStyle().toLowerCase();
+            if (!style.matches("sedan|suv|hatchback|coupe|convertible|wagon|van|truck")) {
+                throw new VehicleException("Invalid body style");
+            }
+        }
+
         return ResponseEntity.ok(vehicleService.updateVehicle(id, vehicleDTO));
     }
 
@@ -71,9 +90,13 @@ public class VehicleController {
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
             @RequestParam(required = false) String condition,
-            @RequestParam(required = false) String fuelType) {
+            @RequestParam(required = false) String fuelType,
+            @RequestParam(required = false) Integer mileage,
+            @RequestParam(required = false) String transmission,
+            @RequestParam(required = false) String bodyStyle) {
         return ResponseEntity.ok(vehicleService.getVehicles(
-                city, brand, name, year, model, minPrice, maxPrice, condition, fuelType));
+                city, brand, name, year, model, minPrice, maxPrice, 
+                condition, fuelType, mileage, transmission, bodyStyle));
     }
 
     @PostMapping
@@ -90,6 +113,25 @@ public class VehicleController {
 
             // Set user ID
             vehicleDTO.setUserId(user.getId());
+
+            // Additional validation for new fields
+            if (vehicleDTO.getMileage() != null && vehicleDTO.getMileage() < 0) {
+                throw new VehicleException("Mileage cannot be negative");
+            }
+
+            if (vehicleDTO.getTransmission() != null) {
+                String trans = vehicleDTO.getTransmission().toLowerCase();
+                if (!trans.matches("automatic|manual|cvt|semi-automatic")) {
+                    throw new VehicleException("Invalid transmission type");
+                }
+            }
+
+            if (vehicleDTO.getBodyStyle() != null) {
+                String style = vehicleDTO.getBodyStyle().toLowerCase();
+                if (!style.matches("sedan|suv|hatchback|coupe|convertible|wagon|van|truck")) {
+                    throw new VehicleException("Invalid body style");
+                }
+            }
 
             // Handle image uploads
             if (images != null && images.length > 0) {

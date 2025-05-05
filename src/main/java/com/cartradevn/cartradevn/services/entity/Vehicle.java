@@ -33,11 +33,29 @@ public class Vehicle {
     @Column(nullable = false)
     private String color;
 
+    @Column(nullable = false)
+    private Integer mileage;  // Add mileage field
+
+    @Column(name = "transmission", nullable = false)
+    private String transmission;  // Add transmission field (Auto/Manual)
+
+    @Column(name = "body_style", nullable = false)
+    private String bodyStyle;  // Add body style field (Sedan/SUV/etc)
+
     @Column(name = "vehicle_condition", nullable = false)
     private String condition;
 
     @Column(name = "fuel_type", nullable = false)
     private String fuelType; // Petrol/Electric/...
+
+    @Column(name = "engine_size", nullable = false)
+    private Double engineSize; // Engine size in liters
+
+    @Column(nullable = false)
+    private Integer doors; // Number of doors
+
+    @Column(nullable = false)
+    private Integer cylinders; // Number of cylinders
 
     @Column(nullable = false)
     private Double price;
