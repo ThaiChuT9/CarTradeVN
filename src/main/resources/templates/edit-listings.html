@@ -491,47 +491,47 @@
                 <div class="text">Lorem ipsum dolor sit amet, consectetur.</div>
               </div>
               <div class="form-box">
-                <form th:action="@{/add-listings}" method="post" class="row" enctype="multipart/form-data">
+                <form th:action="@{/vehicles/update/{id}(id=${vehicle.id})}" method="post" class="row" enctype="multipart/form-data">
                     <!-- Car Details Section -->
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Brand</label>
                             <select name="brand" class="form-select" required>
-                                <option value="">Select Brand</option>
-                                <option value="Audi">Audi</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Honda">Honda</option>
-                                <option value="Hyundai">Hyundai</option>
-                                <option value="Mercedes">Mercedes-Benz</option>
-                            </select>
+                              <option value="">Select Brand</option>
+                              <option value="Audi" th:selected="${vehicle.brand == 'Audi'}">Audi</option>
+                              <option value="BMW" th:selected="${vehicle.brand == 'BMW'}">BMW</option>
+                              <option value="Honda" th:selected="${vehicle.brand == 'Honda'}">Honda</option>
+                              <option value="Hyundai" th:selected="${vehicle.brand == 'Hyundai'}">Hyundai</option>
+                              <option value="Mercedes" th:selected="${vehicle.brand == 'Mercedes'}">Mercedes-Benz</option>
+                          </select>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Model</label>
-                            <input type="text" name="model" required>
+                            <input type="text" name="model" th:value="${vehicle.model}" required>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Name</label>
-                            <input type="text" name="name" required>
+                            <input type="text" name="name" th:value="${vehicle.name}" required>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Year</label>
-                            <input type="number" name="year" required>
+                            <input type="number" name="year" th:value="${vehicle.year}" required>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Color</label>
-                            <input type="text" name="color" required>
+                            <input type="text" name="color" th:value="${vehicle.color}" required>
                         </div>
                     </div>
 
@@ -540,8 +540,8 @@
                             <label>Condition</label>
                             <select name="condition" class="form-select" required>
                                 <option value="">Select Condition</option>
-                                <option value="new">New</option>
-                                <option value="used">Used</option>
+                                <option value="new" th:selected="${vehicle.condition == 'new'}">New</option>
+                                <option value="used" th:selected="${vehicle.condition == 'used'}">Used</option>
                             </select>
                         </div>
                     </div>
@@ -551,10 +551,10 @@
                             <label>Fuel Type</label>
                             <select name="fuelType" class="form-select" required>
                                 <option value="">Select Fuel Type</option>
-                                <option value="petrol">Petrol</option>
-                                <option value="diesel">Diesel</option>
-                                <option value="electric">Electric</option>
-                                <option value="hybrid">Hybrid</option>
+                                <option value="petrol" th:selected="${vehicle.fuelType == 'petrol'}">Petrol</option>
+                                <option value="diesel" th:selected="${vehicle.fuelType == 'diesel'}">Diesel</option>
+                                <option value="electric" th:selected="${vehicle.fuelType == 'electric'}">Electric</option>
+                                <option value="hybrid" th:selected="${vehicle.fuelType == 'hybrid'}">Hybrid</option>
                             </select>
                         </div>
                     </div>
@@ -562,28 +562,36 @@
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>Price ($)</label>
-                            <input type="number" name="price" required>
+                            <input type="number" name="price" th:value="${vehicle.price}" required>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form_boxes">
                             <label>City</label>
-                            <input type="text" name="city" required>
+                            <input type="text" name="city" th:value="${vehicle.city}" required>
                         </div>
                     </div>
 
                     <div class="col-lg-12">
                         <div class="form_boxes">
                             <label>Description</label>
-                            <textarea name="description" rows="4" required></textarea>
+                            <textarea name="description" rows="4" required th:text="${vehicle.description}"></textarea>
                         </div>
                     </div>
 
-                    <!-- Image Upload Section -->
+                    <!-- Current Image Preview -->
+                    <div class="col-lg-12" th:if="${vehicle.imageUrl != null}">
+                        <div class="current-images">
+                            <h6>Current Images</h6>
+                            <img th:src="${vehicle.imageUrl}" alt="Current vehicle image">
+                        </div>
+                    </div>
+
+                    <!-- New Image Upload -->
                     <div class="col-lg-12">
                         <div class="gallery-box">
-                            <h6 class="title">Vehicle Images</h6>
+                            <h6 class="title">Update Images</h6>
                             <div class="inner-box">
                                 <input type="file" name="images" multiple accept="image/*">
                                 <div class="text">Max file size is 1MB, Minimum dimension: 330x300 And Suitable files are .jpg & .png</div>
@@ -595,12 +603,12 @@
                     <div class="col-lg-12">
                         <div class="form-submit">
                             <button type="submit" class="theme-btn">
-                                Add Vehicle <img src="/static/images/arrow.svg" alt="">
+                                Update Vehicle <img src="/static/images/arrow.svg" alt="">
                             </button>
                         </div>
                     </div>
 
-                    <!-- Error Messages -->
+                    <!-- Messages -->
                     <div th:if="${error}" class="alert alert-danger">
                         <p th:text="${error}"></p>
                     </div>

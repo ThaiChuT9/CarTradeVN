@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.cartradevn.cartradevn.services.repository.VehicleRepo;
 
@@ -198,4 +199,25 @@ public class VehicleService {
             throw new VehicleException("Error getting vehicles for user: " + e.getMessage());
         }
     }
+
+    public Page<VehicleDTO> getAllVehiclesPaged(Pageable pageable) {
+        Page<Vehicle> vehiclePage = vehicleRepo.findAll(pageable);
+        return vehiclePage.map(this::convertToDTO);
+    }
+
+    public Page<VehicleDTO> searchVehicles(String searchTerm, Pageable pageable) {
+        try {
+            Page<Vehicle> vehicles = vehicleRepo
+                .findByNameContainingIgnoreCaseOrBrandContainingIgnoreCase(
+                    searchTerm, 
+                    searchTerm, 
+                    pageable
+                );
+            return vehicles.map(this::convertToDTO);
+        } catch (Exception e) {
+            throw new RuntimeException("Error searching vehicles: " + e.getMessage());
+        }
+    }
+
+    
 }
