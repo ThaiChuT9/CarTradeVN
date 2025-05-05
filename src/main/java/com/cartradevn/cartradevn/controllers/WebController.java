@@ -41,9 +41,9 @@ public class WebController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping({ "/", "/index-9" })
+    @GetMapping({ "/", "/index" })
     public String index(HttpSession session) {
-        return "index-9";
+        return "index";
     }
 
     @GetMapping("/faq")

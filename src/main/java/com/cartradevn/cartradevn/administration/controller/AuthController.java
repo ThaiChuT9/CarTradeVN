@@ -62,7 +62,7 @@ public class AuthController {
     //         if (UserRole.valueOf(userDto.getRole()) == UserRole.ADMIN) {
     //             return "redirect:/dashboard";
     //         } else {
-    //             return "redirect:/index-9";
+    //             return "redirect:/index";
     //         }
     //     } catch (RuntimeException e) {
     //         redirectAttributes.addFlashAttribute("E", e.getMessage());
