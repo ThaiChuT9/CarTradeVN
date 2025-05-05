@@ -39,7 +39,7 @@ public class VehicleService {
 
     // Lấy danh sách xe với bộ lọc
     public List<VehicleDTO> getVehicles(String city, String brand, String name, Integer year, String model, Double minPrice, Double maxPrice,
-            String condition, String fuelType) {
+            String condition, String fuelType, Integer mileage, String transmission, String bodyStyle) {
         List<Vehicle> vehicles = vehicleRepo.findAll();
 
         // áp dụng bộ lọc
@@ -71,6 +71,21 @@ public class VehicleService {
             vehicles = vehicles.stream().filter(v -> v.getFuelType().equalsIgnoreCase(fuelType))
                     .collect(Collectors.toList());
         }
+        if (mileage != null) {
+            vehicles = vehicles.stream()
+                    .filter(v -> v.getMileage() <= mileage)
+                    .collect(Collectors.toList());
+        }
+        if (transmission != null) {
+            vehicles = vehicles.stream()
+                    .filter(v -> v.getTransmission().equalsIgnoreCase(transmission))
+                    .collect(Collectors.toList());
+        }
+        if (bodyStyle != null) {
+            vehicles = vehicles.stream()
+                    .filter(v -> v.getBodyStyle().equalsIgnoreCase(bodyStyle))
+                    .collect(Collectors.toList());
+        }
         // chuyển đổi danh sách xe thành danh sách DTO
         return vehicles.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
@@ -96,6 +111,12 @@ public class VehicleService {
             vehicle.setCity(vehicleDTO.getCity());
             vehicle.setDescription(vehicleDTO.getDescription());
             vehicle.setImageUrl(vehicleDTO.getImageUrl()); // Set image URL if provided
+            vehicle.setMileage(vehicleDTO.getMileage());
+            vehicle.setTransmission(vehicleDTO.getTransmission());
+            vehicle.setBodyStyle(vehicleDTO.getBodyStyle());
+            vehicle.setEngineSize(vehicleDTO.getEngineSize());
+            vehicle.setDoors(vehicleDTO.getDoors());
+            vehicle.setCylinders(vehicleDTO.getCylinders());
             vehicle.setStatus("pending"); // Trạng thái mặc định là 'pending'
             vehicle.setCreatedAt(LocalDateTime.now()); // Set createdAt to current time
             vehicle.setUser(user); // Set user
@@ -126,6 +147,12 @@ public class VehicleService {
         vehicleDTO.setCity(vehicle.getCity());
         vehicleDTO.setDescription(vehicle.getDescription());
         vehicleDTO.setImageUrl(vehicle.getImageUrl()); // Lấy URL hình ảnh từ đối tượng Vehicle
+        vehicleDTO.setMileage(vehicle.getMileage());
+        vehicleDTO.setTransmission(vehicle.getTransmission());
+        vehicleDTO.setBodyStyle(vehicle.getBodyStyle());
+        vehicleDTO.setEngineSize(vehicle.getEngineSize());
+        vehicleDTO.setDoors(vehicle.getDoors());
+        vehicleDTO.setCylinders(vehicle.getCylinders());
         vehicleDTO.setStatus(vehicle.getStatus());
         if (vehicle.getCreatedAt() != null) {
             vehicleDTO.setCreatedAt(vehicle.getCreatedAt().toString()); // Chuyển đổi LocalDateTime thành String
@@ -158,6 +185,12 @@ public class VehicleService {
             existingVehicle.setCity(vehicleDTO.getCity());
             existingVehicle.setDescription(vehicleDTO.getDescription());
             existingVehicle.setImageUrl(vehicleDTO.getImageUrl()); // Cập nhật URL hình ảnh nếu có
+            existingVehicle.setMileage(vehicleDTO.getMileage());
+            existingVehicle.setTransmission(vehicleDTO.getTransmission());
+            existingVehicle.setBodyStyle(vehicleDTO.getBodyStyle());
+            existingVehicle.setEngineSize(vehicleDTO.getEngineSize());
+            existingVehicle.setDoors(vehicleDTO.getDoors());
+            existingVehicle.setCylinders(vehicleDTO.getCylinders());
             // Không cập nhật status và createdAt vì đây là thông tin hệ thống
 
             Vehicle updatedVehicle = vehicleRepo.save(existingVehicle);

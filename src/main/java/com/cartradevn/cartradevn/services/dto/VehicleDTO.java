@@ -16,6 +16,12 @@ public class VehicleDTO {
     private String name;
     private Integer year;
     private String color;
+    private Integer mileage;
+    private String transmission;
+    private String bodyStyle;
+    private Double engineSize;
+    private Integer doors;
+    private Integer cylinders;
     private String condition; // Corrected spelling
     private String fuelType; // Petrol/Electric/... 
     private Double price;
@@ -66,6 +72,50 @@ public class VehicleDTO {
                fuel.equals("diesel") || 
                fuel.equals("electric") || 
                fuel.equals("hybrid");
+    }
+
+    @AssertTrue(message = "Số km đã đi phải lớn hơn hoặc bằng 0")
+    public boolean isMileageValid() {
+        return mileage != null && mileage >= 0;
+    }
+
+    @AssertTrue(message = "Transmission chỉ được là 'automatic', 'manual', 'cvt' hoặc 'semi-automatic'")
+    public boolean isTransmissionValid() {
+        if (transmission == null) return true; // optional field
+        String trans = transmission.toLowerCase();
+        return trans.equals("automatic") || 
+               trans.equals("manual") || 
+               trans.equals("cvt") || 
+               trans.equals("semi-automatic");
+    }
+
+    @AssertTrue(message = "Body Style không hợp lệ")
+    public boolean isBodyStyleValid() {
+        if (bodyStyle == null) return true; // optional field
+        String style = bodyStyle.toLowerCase();
+        return style.equals("sedan") || 
+               style.equals("suv") || 
+               style.equals("hatchback") || 
+               style.equals("coupe") || 
+               style.equals("convertible") || 
+               style.equals("wagon") || 
+               style.equals("van") || 
+               style.equals("truck");
+    }
+
+    @AssertTrue(message = "Engine size phải lớn hơn 0")
+    public boolean isEngineSizeValid() {
+        return engineSize != null && engineSize > 0;
+    }
+
+    @AssertTrue(message = "Số cửa phải từ 2 đến 5")
+    public boolean isDoorsValid() {
+        return doors != null && doors >= 2 && doors <= 5;
+    }
+
+    @AssertTrue(message = "Số xi-lanh phải từ 3 đến 12")
+    public boolean isCylindersValid() {
+        return cylinders != null && cylinders >= 3 && cylinders <= 12;
     }
 }
 
