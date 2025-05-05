@@ -44,7 +44,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/index-9", "/faq", 
                                "/login", "/register", 
                                "/static/**", "/css/**", "/js/**", 
-                               "/images/**", "/fonts/**").permitAll()
+                               "/images/**", "/fonts/**","/edit-listings/**").permitAll()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/admin-dashboard/**", "/users-list/**",
                                "/admin-profile/**", "/users/edit/**",
