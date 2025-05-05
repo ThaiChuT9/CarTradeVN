@@ -14,7 +14,7 @@
         "description": "Toyota Fortuner 2019 là mẫu SUV 7 chỗ được ưa chuộng tại Việt Nam, nổi bật với thiết kế mạnh mẽ, khả năng vận hành ổn định và độ bền cao. Xe phù hợp cho cả nhu cầu gia đình và kinh doanh dịch vụ. Đã đi được 50,000 km",
         "status": "Đã bán",
         "createdAt": "2024-09-16 12:24:55",
-        "image": "images/toyota_fortuner_1.jpg"
+        "image": "../static/images/toyota_fortuner_1.jpg"
     },
     {
         "id": 2,
@@ -31,7 +31,7 @@
         "description": "Kia Morning 2022 là phiên bản hatchback 5 chỗ, nổi bật với thiết kế thể thao và hiện đại. Xe được trang bị động cơ Kappa 1.2 MPI kết hợp với hộp số tự động 4 cấp (4AT), mang lại hiệu suất vận hành ổn định và tiết kiệm nhiên liệu.",
         "status": "Chờ duyệt",
         "createdAt": "2024-11-15 12:24:55",
-        "image": "images/kia_morning_2.jpg"
+        "image": "../static/images/kia_morning_2.jpg"
     },
     {
         "id": 3,
@@ -48,7 +48,7 @@
         "description": "Mazda6 2024 là mẫu sedan hạng D 5 chỗ, nổi bật với thiết kế tinh tế và đậm chất thể thao. Xe được trang bị động cơ SkyActiv-G 2.5L kết hợp công nghệ hybrid nhẹ (Mild-Hybrid), mang lại khả năng vận hành mượt mà, tiết kiệm nhiên liệu và thân thiện với môi trường.",
         "status": "Đã bán",
         "createdAt": "2025-02-14 12:24:55",
-        "image": "images/mazda_mazda6_3.jpg"
+        "image": "../static/images/mazda_mazda6_3.jpg"
     },
     {
         "id": 4,
@@ -65,7 +65,7 @@
         "description": "Kia Morning 2021 là mẫu hatchback 5 chỗ, phiên bản màu trắng mới, sử dụng động cơ diesel 1.1L. Xe nổi bật với thiết kế nhỏ gọn, tiết kiệm nhiên liệu và phù hợp di chuyển linh hoạt trong đô thị.",
         "status": "Đã duyệt",
         "createdAt": "2024-05-25 12:24:55",
-        "image": "images/kia_morning_4.jpg"
+        "image": "../static/images/kia_morning_4.jpg"
     },
     {
         "id": 5,
@@ -82,7 +82,7 @@
         "description": "Mazda6 2017 là mẫu sedan hạng D 5 chỗ, nổi bật với thiết kế sang trọng và khả năng vận hành linh hoạt. Xe được trang bị động cơ xăng SkyActiv-G 2.5L, sản sinh công suất 184 mã lực, kết hợp với hộp số tự động 6 cấp, mang lại hiệu suất vận hành ổn định và tiết kiệm nhiên liệu. ",
         "status": "Đã bán",
         "createdAt": "2025-03-08 12:24:55",
-        "image": "images/mazda_mazda6_5.jpg"
+        "image": "../static/images/mazda_mazda6_5.jpg"
     },
     {
         "id": 6,
@@ -99,7 +99,7 @@
         "description": "Kia Morning 2024 là mẫu hatchback 5 chỗ, phiên bản màu xanh dương, sử dụng động cơ xăng Kappa 1.25L kết hợp hộp số tự động 4 cấp (4AT), mang lại hiệu suất vận hành ổn định và tiết kiệm nhiên liệu.",
         "status": "Đã duyệt",
         "createdAt": "2024-12-28 12:24:55",
-        "image": "images/kia_morning_6.jpg"
+        "image": "../static/images/kia_morning_6.jpg"
     },
     {
         "id": 7,
@@ -116,7 +116,7 @@
         "description": "Kia Sorento 2024 là phiên bản SUV 7 chỗ, thiết kế sang trọng và hiện đại. Xe sử dụng động cơ xăng Smartstream 2.5L, sản sinh công suất 177 mã lực và mô-men xoắn 232 Nm, kết hợp với hộp số tự động 6 cấp. Phiên bản 2.5G Signature AWD cung cấp khả năng vận hành linh hoạt, với hệ dẫn động 4 bánh toàn thời gian (AWD). Đã đi được 60,000 km.",
         "status": "Đã bán",
         "createdAt": "2025-04-03 12:24:55",
-        "image": "images/kia_sorento_7.jpg"
+        "image": "../static/images/kia_sorento_7.jpg"
     },
     {
         "id": 8,
@@ -133,7 +133,7 @@
         "description": "Kia Seltos 2017 là mẫu SUV 5 chỗ, thiết kế hiện đại và cá tính. Xe trang bị động cơ xăng, với công suất mạnh mẽ, tạo cảm giác lái ổn định và tiết kiệm nhiên liệu. Màu xanh dương tươi sáng làm nổi bật vẻ ngoài thể thao và năng động của xe. Đã đi được 30,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2024-04-27 12:24:55",
-        "image": "images/kia_seltos_8.jpg"
+        "image": "../static/images/kia_seltos_8.jpg"
     },
     {
         "id": 9,
@@ -150,7 +150,7 @@
         "description": "Kia Morning 2023 là mẫu hatchback 5 chỗ, thiết kế hiện đại và năng động. Xe trang bị động cơ xăng Kappa 1.25L, công suất 83 mã lực, mô-men xoắn 120 Nm, kết hợp với hộp số tự động 4 cấp hoặc số sàn 5 cấp. Hệ dẫn động cầu trước, phù hợp cho di chuyển trong đô thị. Đã đi được 30,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2025-03-08 12:24:55",
-        "image": "images/kia_morning_9.jpg"
+        "image": "../static/images/kia_morning_9.jpg"
     },
     {
         "id": 10,
@@ -167,7 +167,7 @@
         "description": "Hyundai Santa Fe 2018 là SUV 7 chỗ, thiết kế mạnh mẽ và sang trọng. Xe trang bị động cơ xăng 2.4L MPI, công suất 176 mã lực, kết hợp với hộp số tự động 6 cấp. Hệ dẫn động cầu trước hoặc AWD. Đã đi được 30,000 km",
         "status": "Đã duyệt",
         "createdAt": "2024-06-04 12:24:55",
-        "image": "images/hyundai_santa_fe_10.jpg"
+        "image": "../static/images/hyundai_santa_fe_10.jpg"
     },
     {
         "id": 11,
@@ -184,7 +184,7 @@
         "description": "Toyota Vios 2021 là mẫu sedan 5 chỗ, thiết kế hiện đại và thể thao. Xe trang bị động cơ xăng 1.5L, công suất 107 mã lực, mô-men xoắn 140 Nm, kết hợp với hộp số CVT. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 40,000 km​",
         "status": "Đã duyệt",
         "createdAt": "2024-07-04 12:24:55",
-        "image": "images/toyota_vios_11.jpg"
+        "image": "../static/images/toyota_vios_11.jpg"
     },
     {
         "id": 12,
@@ -201,7 +201,7 @@
         "description": "Honda Civic 2022 màu xám là phiên bản sedan 5 chỗ, thiết kế thể thao và hiện đại. Xe trang bị động cơ VTEC TURBO 1.5L, công suất 176 mã lực, kết hợp với hộp số tự động vô cấp CVT. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 40,000 km",
         "status": "Đã bán",
         "createdAt": "2024-10-19 12:24:55",
-        "image": "images/honda_civic_12.jpg"
+        "image": "../static/images/honda_civic_12.jpg"
     },
     {
         "id": 13,
@@ -218,7 +218,7 @@
         "description": "Mẫu xe này chỉ được trang bị động cơ xăng 2.5L 4 xi-lanh, công suất 184 mã lực, kết hợp với hộp số tự động 6 cấp hoặc số sàn 6 cấp, tùy phiên bản. Hệ dẫn động cầu trước (FWD) là tiêu chuẩn. Đã đi được 40,000 km",
         "status": "Đã duyệt",
         "createdAt": "2024-07-31 12:24:55",
-        "image": "images/mazda_mazda6_13.jpg"
+        "image": "../static/images/mazda_mazda6_13.jpg"
     },
     {
         "id": 14,
@@ -235,7 +235,7 @@
         "description": "Kia Seltos 2018 là mẫu SUV 5 chỗ, thiết kế thể thao và hiện đại. Xe trang bị động cơ xăng 1.6L, công suất 121 mã lực, mô-men xoắn 151 Nm, kết hợp với hộp số tự động 6 cấp. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 20,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2024-10-28 12:24:55",
-        "image": "images/kia_seltos_14.jpg"
+        "image": "../static/images/kia_seltos_14.jpg"
     },
     {
         "id": 15,
@@ -252,7 +252,7 @@
         "description": "Toyota Fortuner 2019 màu trắng là mẫu SUV 7 chỗ, thiết kế mạnh mẽ và sang trọng. Xe trang bị động cơ dầu 2.4L, công suất 147 mã lực, kết hợp với hộp số tự động 6 cấp hoặc số sàn 6 cấp, tùy phiên bản. Hệ dẫn động cầu sau (4x2) hoặc 4 bánh toàn thời gian (4x4), phù hợp cho di chuyển trong đô thị và off-road nhẹ.",
         "status": "Chờ duyệt",
         "createdAt": "2024-11-12 12:24:55",
-        "image": "images/toyota_fortuner_15.jpg"
+        "image": "../static/images/toyota_fortuner_15.jpg"
     },
     {
         "id": 16,
@@ -269,7 +269,7 @@
         "description": "Honda CR-V 2022 màu xám là mẫu SUV 5 chỗ, thiết kế hiện đại và sang trọng. Xe trang bị động cơ xăng 1.5L DOHC VTEC TURBO, công suất 188 mã lực, kết hợp với hộp số CVT. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 20,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2025-02-08 12:24:55",
-        "image": "images/honda_cr-v_16.jpg"
+        "image": "../static/images/honda_cr-v_16.jpg"
     },
     {
         "id": 17,
@@ -286,7 +286,7 @@
         "description": "Honda CR-V 2017 màu đỏ là mẫu SUV 5 chỗ, thiết kế thể thao và hiện đại. Xe trang bị động cơ xăng 2.4L i-VTEC, công suất 173 mã lực, kết hợp với hộp số tự động 5 cấp. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 20,000 km",
         "status": "Đã bán",
         "createdAt": "2024-06-20 12:24:55",
-        "image": "images/honda_cr-v_17.jpg"
+        "image": "../static/images/honda_cr-v_17.jpg"
     },
     {
         "id": 18,
@@ -303,7 +303,7 @@
         "description": "Mazda6 2015 màu bạc là mẫu sedan hạng D 5 chỗ, thiết kế sang trọng và thể thao. Xe trang bị động cơ xăng SkyActiv-G 2.5L, công suất 185 mã lực, mô-men xoắn 250 Nm, kết hợp với hộp số tự động 6 cấp. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị và đường trường.​ Đã đi được 50,000 km",
         "status": "Đã bán",
         "createdAt": "2025-04-10 12:24:55",
-        "image": "images/mazda_mazda6_18.jpg"
+        "image": "../static/images/mazda_mazda6_18.jpg"
     },
     {
         "id": 19,
@@ -320,7 +320,7 @@
         "description": "Honda CR-V 2016 là mẫu SUV 5 chỗ, thiết kế hiện đại và sang trọng. Xe trang bị động cơ xăng 2.4L i-VTEC, công suất 185 mã lực, kết hợp với hộp số tự động 5 cấp. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị.​",
         "status": "Đã bán",
         "createdAt": "2024-04-26 12:24:55",
-        "image": "images/honda_cr-v_19.jpg"
+        "image": "../static/images/honda_cr-v_19.jpg"
     },
     {
         "id": 20,
@@ -337,7 +337,7 @@
         "description": "Hyundai Santa Fe 2015 màu trắng là mẫu SUV 7 chỗ, thiết kế sang trọng và mạnh mẽ. Xe được trang bị động cơ dầu 2.2L CRDi, công suất khoảng 194 mã lực, kết hợp với hộp số tự động 6 cấp. Hệ dẫn động cầu trước (FWD) hoặc 4 bánh toàn thời gian (AWD), tùy phiên bản.",
         "status": "Chờ duyệt",
         "createdAt": "2024-12-05 12:24:55",
-        "image": "images/hyundai_santa_fe_20.jpg"
+        "image": "../static/images/hyundai_santa_fe_20.jpg"
     },
     {
         "id": 21,
@@ -354,7 +354,7 @@
         "description": "Honda City 2017 màu đỏ là mẫu sedan hạng B, thiết kế thể thao và hiện đại. Xe trang bị động cơ xăng 1.5L i-VTEC, công suất 118 mã lực, kết hợp với hộp số tự động CVT. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 50,000 km",
         "status": "Đã bán",
         "createdAt": "2024-09-01 12:24:55",
-        "image": "images/honda_city_21.jpg"
+        "image": "../static/images/honda_city_21.jpg"
     },
     {
         "id": 22,
@@ -371,7 +371,7 @@
         "description": "Kia Morning 2017 màu xanh dương là mẫu hatchback 5 chỗ, thiết kế nhỏ gọn và năng động. Xe trang bị động cơ xăng 1.25L, công suất 86 mã lực, kết hợp với hộp số tự động 4 cấp (AT) hoặc số sàn 5 cấp (MT), tùy phiên bản. Hệ dẫn động cầu trước (FWD), phù hợp cho di chuyển trong đô thị. Đã đi được 50,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2025-01-19 12:24:55",
-        "image": "images/kia_morning_22.jpg"
+        "image": "../static/images/kia_morning_22.jpg"
     },
     {
         "id": 23,
@@ -388,7 +388,7 @@
         "description": "Hyundai Santa Fe 2022 màu bạc là SUV 7 chỗ, trang bị động cơ dầu 2.2L, công suất 202 mã lực, kết hợp với hộp số 8 cấp và hệ dẫn động AWD. Xe có khả năng vận hành mạnh mẽ, tiết kiệm nhiên liệu (9.1-9.3L/100km), và nội thất sang trọng. Phù hợp cho gia đình và di chuyển đường dài. Đã đi được 50,000 km",
         "status": "Đã bán",
         "createdAt": "2025-04-14 12:24:55",
-        "image": "images/hyundai_santa_fe_23.jpg"
+        "image": "../static/images/hyundai_santa_fe_23.jpg"
     },
     {
         "id": 24,
@@ -405,7 +405,7 @@
         "description": "Toyota Vios 2023 màu trắng là sedan 5 chỗ, thiết kế thanh lịch và hiện đại. Xe trang bị động cơ xăng 1.2L, công suất 94 mã lực, kết hợp hộp số CVT và hệ dẫn động cầu trước (FWD), mang lại hiệu suất vận hành ổn định và tiết kiệm nhiên liệu.",
         "status": "Đã duyệt",
         "createdAt": "2024-12-09 12:24:55",
-        "image": "images/toyota_vios_24.jpg"
+        "image": "../static/images/toyota_vios_24.jpg"
     },
     {
         "id": 25,
@@ -422,7 +422,7 @@
         "description": "Mazda3 2024 màu đỏ là sedan hoặc hatchback 5 chỗ, thiết kế thể thao và sang trọng. Xe trang bị động cơ xăng 2.0L, công suất 165 mã lực, kết hợp với hộp số tự động 6 cấp. Phiên bản Mild Hybrid hỗ trợ tiết kiệm nhiên liệu và giảm mức tiêu thụ xăng. Đã đi được 30,000 km",
         "status": "Đã bán",
         "createdAt": "2024-10-30 12:24:55",
-        "image": "images/mazda_mazda3_25.jpg"
+        "image": "../static/images/mazda_mazda3_25.jpg"
     },
     {
         "id": 26,
@@ -439,7 +439,7 @@
         "description": "Toyota Camry 2022 màu đen, phiên bản hybrid 2.5HV, sử dụng động cơ xăng 2.5L kết hợp mô-tơ điện, tổng công suất 208 mã lực. Xe có hộp số E-CVT, hệ dẫn động cầu trước, và tiêu thụ nhiên liệu 4.4L/100 km. Thiết kế sang trọng, đầy đủ tính năng an toàn. Đã đi được 30,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2024-09-27 12:24:55",
-        "image": "images/toyota_camry_26.jpg"
+        "image": "../static/images/toyota_camry_26.jpg"
     },
     {
         "id": 27,
@@ -456,7 +456,7 @@
         "description": "Toyota Vios 2020 màu trắng là sedan 5 chỗ, thiết kế tinh tế và hiện đại. Xe trang bị động cơ xăng 1.5L, công suất 107 mã lực, kết hợp với hộp số CVT hoặc số sàn. Đã đi được 30,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2024-05-03 12:24:55",
-        "image": "images/toyota_vios_27.jpg"
+        "image": "../static/images/toyota_vios_27.jpg"
     },
     {
         "id": 28,
@@ -473,7 +473,7 @@
         "description": "Hyundai Santa Fe 2019 màu đỏ là SUV 7 chỗ, thiết kế mạnh mẽ và hiện đại. Xe sử dụng động cơ xăng 2.4L hoặc diesel 2.2L, kết hợp hộp số tự động 8 cấp và hệ dẫn động cầu trước hoặc AWD. Đã đi được 30,000 km",
         "status": "Đã bán",
         "createdAt": "2025-03-30 12:24:55",
-        "image": "images/hyundai_santa_fe_28.jpg"
+        "image": "../static/images/hyundai_santa_fe_28.jpg"
     },
     {
         "id": 29,
@@ -490,7 +490,7 @@
         "description": "Kia Morning 2019 màu đỏ là hatchback 5 chỗ, nhỏ gọn và linh hoạt trong đô thị. Xe dùng động cơ xăng 1.2L, công suất 84 mã lực, kết hợp hộp số tự động 4 cấp hoặc số sàn 5 cấp. Đã đi được 30,000 km",
         "status": "Đã bán",
         "createdAt": "2025-02-09 12:24:55",
-        "image": "images/kia_morning_29.jpg"
+        "image": "../static/images/kia_morning_29.jpg"
     },
     {
         "id": 30,
@@ -507,7 +507,7 @@
         "description": "Kia Sorento 2022 màu bạc là SUV 7 chỗ, thiết kế hiện đại và mạnh mẽ. Xe trang bị động cơ xăng Smartstream 2.5L, công suất 177 mã lực, mô-men xoắn 232 Nm, kết hợp hộp số tự động 6 cấp và hệ dẫn động cầu trước hoặc AWD. Nội thất rộng rãi, tiện nghi cao cấp, phù hợp cho gia đình và di chuyển đường dài. Đã đi được 20,000 km​",
         "status": "Đã duyệt",
         "createdAt": "2024-08-26 12:24:55",
-        "image": "images/kia_sorento_30.jpg"
+        "image": "../static/images/kia_sorento_30.jpg"
     },
     {
         "id": 31,
@@ -524,7 +524,7 @@
         "description": "Toyota Vios 2019 màu trắng là sedan 5 chỗ, thiết kế đơn giản và thực dụng. Xe sử dụng động cơ xăng 1.5L, công suất 107 mã lực, hộp số CVT hoặc số sàn",
         "status": "Chờ duyệt",
         "createdAt": "2025-01-06 12:24:55",
-        "image": "images/toyota_vios_31.jpg"
+        "image": "../static/images/toyota_vios_31.jpg"
     },
     {
         "id": 32,
@@ -541,7 +541,7 @@
         "description": "Honda City 2018 màu đen là sedan 5 chỗ, thiết kế hiện đại và thực dụng. Xe sử dụng động cơ xăng 1.5L i-VTEC, công suất 118 mã lực, mô-men xoắn 145 Nm, kết hợp hộp số CVT hoặc số sàn 5 cấp. Mức tiêu thụ nhiên liệu khoảng 5,6–5,9L/100 km.",
         "status": "Đã duyệt",
         "createdAt": "2024-08-10 12:24:55",
-        "image": "images/honda_civic_32.jpg"
+        "image": "../static/images/honda_civic_32.jpg"
     },
     {
         "id": 33,
@@ -558,7 +558,7 @@
         "description": "Toyota Fortuner 2017 màu trắng là SUV 7 chỗ, thiết kế mạnh mẽ. Xe dùng động cơ xăng 2.7L hoặc diesel 2.4L, hộp số tự động hoặc sàn 6 cấp, dẫn động cầu sau hoặc 4WD. Phù hợp di chuyển gia đình và đường trường. Đã đi được 50,000 km",
         "status": "Chờ duyệt",
         "createdAt": "2025-04-07 12:24:55",
-        "image": "images/toyota_fortuner_33.jpg"
+        "image": "../static/images/toyota_fortuner_33.jpg"
     },
     {
         "id": 34,
@@ -575,7 +575,7 @@
         "description": "Hyundai Tucson 2017 màu xám là SUV 5 chỗ, thiết kế hiện đại và thể thao. Xe trang bị động cơ xăng 2.0L, công suất 155 mã lực, kết hợp với hộp số tự động 6 cấp và hệ dẫn động cầu trước hoặc 4 bánh toàn thời gian (AWD), tùy phiên bản. Nội thất rộng rãi, tiện nghi, phù hợp cho gia đình và di chuyển đường dài. Đã đi được 50,000 km​",
         "status": "Chờ duyệt",
         "createdAt": "2025-04-01 12:24:55",
-        "image": "images/hyundai_tucson_34.jpg"
+        "image": "../static/images/hyundai_tucson_34.jpg"
     },
     {
         "id": 35,
@@ -592,7 +592,7 @@
         "description": "Honda City 2016 màu đỏ là sedan 5 chỗ, thiết kế hiện đại và thể thao. Xe trang bị động cơ xăng 1.5L i-VTEC, công suất 120 mã lực, mô-men xoắn 145 Nm, kết hợp với hộp số tự động vô cấp CVT. Xe đạt tiêu chuẩn an toàn 5 sao ASEAN NCAP, phù hợp cho di chuyển đô thị và gia đình. Đã đi được 50,000 km​",
         "status": "Đã duyệt",
         "createdAt": "2024-11-29 12:24:55",
-        "image": "images/honda_city_35.jpg"
+        "image": "../static/images/honda_city_35.jpg"
     },
     {
         "id": 36,
@@ -609,7 +609,7 @@
         "description": "Mazda CX-5 2024 màu đen là SUV 5 chỗ, thiết kế thể thao và sang trọng. Xe sử dụng động cơ xăng 2.0L, công suất 154 mã lực, hộp số tự động 6 cấp, dẫn động cầu trước hoặc AWD. Tiêu thụ nhiên liệu khoảng 7.3L/100 km, phù hợp di chuyển đô thị và gia đình.",
         "status": "Đã duyệt",
         "createdAt": "2024-09-17 12:24:55",
-        "image": "images/mazda_cx-5_36.jpg"
+        "image": "../static/images/mazda_cx-5_36.jpg"
     },
     {
         "id": 37,
@@ -626,7 +626,7 @@
         "description": "Mazda3 2019 là sedan 5 chỗ, thiết kế thể thao và sang trọng. Xe sử dụng động cơ 1.5L, công suất 110 mã lực, hộp số tự động 6 cấp, dẫn động cầu trước. Tiêu thụ nhiên liệu khoảng 6.5–7.0L/100 km, trang bị màn hình 8.8 inch, 7 túi khí, điều hòa tự động.",
         "status": "Chờ duyệt",
         "createdAt": "2024-10-08 12:24:55",
-        "image": "images/mazda_mazda3_37.jpg"
+        "image": "../static/images/mazda_mazda3_37.jpg"
     },
     {
         "id": 38,
@@ -643,7 +643,7 @@
         "description": "Mazda6 2018 màu đỏ sử dụng động cơ dầu 2.2L, công suất 190 mã lực, mô-men xoắn 450 Nm, hộp số tự động 6 cấp, dẫn động cầu trước. Tiêu thụ nhiên liệu khoảng 5.5–6.5L/100 km. Đã đi được 50,000 km",
         "status": "Đã duyệt",
         "createdAt": "2024-12-16 12:24:55",
-        "image": "images/mazda_mazda6_38.jpg"
+        "image": "../static/images/mazda_mazda6_38.jpg"
     },
     {
         "id": 39,
@@ -660,7 +660,7 @@
         "description": "Honda City 2020 màu trắng là sedan 5 chỗ, động cơ 1.5L, công suất 119 mã lực, hộp số CVT, tiêu thụ nhiên liệu 6.5–7.0L/100 km. Phiên bản hybrid (RS e:HEV) kết hợp động cơ xăng 1.5L và điện, công suất 108 mã lực.",
         "status": "Đã bán",
         "createdAt": "2025-01-11 12:24:55",
-        "image": "images/honda_city_39.jpg"
+        "image": "../static/images/honda_city_39.jpg"
     },
     {
         "id": 40,
@@ -677,7 +677,7 @@
         "description": "Hyundai Tucson 2021 màu bạc, động cơ dầu 2.0L, công suất 186 mã lực, mô-men xoắn 416 Nm, hộp số tự động 6 cấp. Tiêu thụ nhiên liệu khoảng 7.5–8.5L/100 km, dẫn động cầu trước.",
         "status": "Đã duyệt",
         "createdAt": "2024-07-11 12:24:55",
-        "image": "images/hyundai_tucson_40.jpg"
+        "image": "../static/images/hyundai_tucson_40.jpg"
     },
     {
         "id": 41,
@@ -694,7 +694,7 @@
         "description": "Mazda3 2015 màu xanh dương, động cơ xăng 1.5L hoặc 2.0L, công suất từ 109 đến 153 mã lực, hộp số tự động 6 cấp. Tiêu thụ nhiên liệu khoảng 6.5–7.5L/100 km. Đã đi được 50,000 km",
         "status": "Đã bán",
         "createdAt": "2024-09-18 12:24:55",
-        "image": "images/mazda_mazda3_41.jpg"
+        "image": "../static/images/mazda_mazda3_41.jpg"
     },
     {
         "id": 42,
@@ -711,7 +711,7 @@
         "description": "Mazda3 2019 màu xanh dương là phiên bản sedan hoặc hatchback 5 chỗ, thiết kế thể thao và hiện đại. Xe được trang bị động cơ xăng Skyactiv-G 2.0L, công suất 155 mã lực, kết hợp với hộp số tự động 6 cấp. Tiêu thụ nhiên liệu khoảng 6.5–7.0L/100 km. Đã đi được 50,000 km",
         "status": "Đã duyệt",
         "createdAt": "2025-04-12 12:24:55",
-        "image": "images/mazda_mazda3_42.jpg"
+        "image": "../static/images/mazda_mazda3_42.jpg"
     },
     {
         "id": 43,
@@ -728,7 +728,7 @@
         "description": "Toyota Vios 2016 màu bạc là mẫu sedan 5 chỗ, thiết kế đơn giản và bền bỉ, phù hợp cho gia đình và di chuyển trong đô thị.",
         "status": "Chờ duyệt",
         "createdAt": "2024-09-08 12:24:55",
-        "image": "images/toyota_vios_43.jpg"
+        "image": "../static/images/toyota_vios_43.jpg"
     },
     {
         "id": 44,
@@ -745,7 +745,7 @@
         "description": "Toyota Vios 2021 màu xanh dương, động cơ xăng 1.5L, công suất 107 mã lực, mô-men xoắn 140 Nm, hộp số CVT. Tiêu thụ nhiên liệu khoảng 5.8–6.5L/100 km. Đã đi được 30,000 km",
         "status": "Đã bán",
         "createdAt": "2024-08-16 12:24:55",
-        "image": "images/toyota_vios_44.jpg"
+        "image": "../static/images/toyota_vios_44.jpg"
     },
     {
         "id": 45,
@@ -762,7 +762,7 @@
         "description": "Honda Civic 2023 màu đen, động cơ 1.5L turbo, công suất 176 mã lực, mô-men xoắn 240 Nm, hộp số CVT. Tiêu thụ nhiên liệu khoảng 5.98–6.52L/100 km. Đã đi được 30,000 km.",
         "status": "Đã bán",
         "createdAt": "2024-11-11 12:24:55",
-        "image": "images/honda_civic_45.jpg"
+        "image": "../static/images/honda_civic_45.jpg"
     },
     {
         "id": 46,
@@ -779,7 +779,7 @@
         "description": "Kia Sorento 2023 màu bạc, có các phiên bản động cơ dầu, xăng và hybrid. Động cơ 2.2L diesel hoặc 2.5L xăng, công suất lên đến 200 mã lực, mô-men xoắn 440 Nm, 6 hoặc 7 chỗ ngồi, hệ thống an toàn và tiện nghi đầy đủ. Đã đi được 30,000 km.",
         "status": "Đã bán",
         "createdAt": "2025-01-25 12:24:55",
-        "image": "images/kia_sorento_46.jpg"
+        "image": "../static/images/kia_sorento_46.jpg"
     },
     {
         "id": 47,
@@ -796,7 +796,7 @@
         "description": "Honda City 2018 màu xám, động cơ xăng 1.5L, công suất 118 mã lực, mô-men xoắn 145 Nm, hộp số CVT. Tiêu thụ nhiên liệu khoảng 5.8–6.5L/100 km. Trang bị: đèn LED, màn hình 7 inch, ghế da, điều hòa tự động.",
         "status": "Đã duyệt",
         "createdAt": "2024-12-29 12:24:55",
-        "image": "images/honda_city_47.jpg"
+        "image": "../static/images/honda_city_47.jpg"
     },
     {
         "id": 48,
@@ -813,7 +813,7 @@
         "description": "Hyundai Accent 2015 màu xanh dương, động cơ xăng 1.4L hoặc 1.6L, công suất 107–138 mã lực, mô-men xoắn 134–167 Nm, hộp số tự động 4 cấp hoặc CVT. Tiêu thụ nhiên liệu khoảng 6.5–7.5L/100 km",
         "status": "Đã duyệt",
         "createdAt": "2024-06-05 12:24:55",
-        "image": "images/hyundai_accent_48.jpg"
+        "image": "../static/images/hyundai_accent_48.jpg"
     },
     {
         "id": 49,
@@ -830,7 +830,7 @@
         "description": "Honda Santa Fe 2015 màu xám, động cơ xăng 2.4L (174 mã lực) hoặc dầu 2.2L (194 mã lực), hộp số tự động 6 cấp, dẫn động cầu trước hoặc 4WD. Tiêu thụ nhiên liệu khoảng 7–9L/100 km. Đã đi được 30,000 km.",
         "status": "Đã bán",
         "createdAt": "2024-07-02 12:24:55",
-        "image": "images/hyundai_santa_fe_49.jpg"
+        "image": "../static/images/hyundai_santa_fe_49.jpg"
     },
     {
         "id": 50,
@@ -847,6 +847,6 @@
         "description": "Hyundai Tucson 2020 màu trắng, động cơ xăng 2.0L (155 mã lực) hoặc xăng 1.6L T-GDI (185 mã lực), mô-men xoắn 192–402 Nm, hộp số tự động 6 cấp hoặc 8 cấp. Tiêu thụ nhiên liệu khoảng 7–8L/100 km. Đã đi được 50,000 km.",
         "status": "Đã bán",
         "createdAt": "2024-11-18 12:24:55",
-        "image": "images/hyundai_tucson_50.jpg"
+        "image": "../static/images/hyundai_tucson_50.jpg"
     }
 ]
