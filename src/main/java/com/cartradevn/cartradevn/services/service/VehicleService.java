@@ -268,10 +268,6 @@ public class VehicleService {
         return vehicleRepo.count();
     }
 
-    public long countDealers() {
-        return vehicleRepo.countDistinctUserIdByRoleEquals(UserRole.SELLER);
-    }
-
     public List<VehicleDTO> getRelatedVehicles(String brand, String bodyStyle, Long excludeId, int limit) {
         List<Vehicle> vehicles = vehicleRepo.findRelatedVehicles(brand, bodyStyle, excludeId, PageRequest.of(0, limit));
         return vehicles.stream()

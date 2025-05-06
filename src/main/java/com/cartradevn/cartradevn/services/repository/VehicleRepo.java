@@ -77,5 +77,4 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     Page<Vehicle> findByUser(User user, Pageable pageable);
     Page<Vehicle> findByCondition(String condition, Pageable pageable);
     List<Vehicle> findByBodyStyle(String bodyStyle);
-    long countDistinctUserIdByRoleEquals(UserRole role);
 }
