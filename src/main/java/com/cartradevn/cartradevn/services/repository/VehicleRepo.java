@@ -2,6 +2,7 @@ package com.cartradevn.cartradevn.services.repository;
 
 import org.springframework.stereotype.Repository;
 
+import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.services.entity.Vehicle;
 
@@ -44,6 +45,15 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
         @Param("fuelType") String fuelType,
         Pageable pageable
     );
+
+    @Query("SELECT v FROM Vehicle v WHERE v.id != :excludeId AND" +
+           "(v.brand = :brand OR v.bodyStyle = :bodyStyle)")
+    List<Vehicle> findRelatedVehicles(
+        @Param("brand") String brand,
+        @Param("bodyStyle") String bodyStyle,
+        @Param("excludeId") Long excludeId,
+        Pageable pageable
+    );
     
     // Các phương thức tìm kiếm cơ bản
     List<Vehicle> findByCity(String city);
@@ -65,4 +75,7 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findByCityAndCondition(String city, String condition);
     Page<Vehicle> findByNameContainingIgnoreCaseOrBrandContainingIgnoreCase(String name, String brand, Pageable pageable);
     Page<Vehicle> findByUser(User user, Pageable pageable);
+    Page<Vehicle> findByCondition(String condition, Pageable pageable);
+    List<Vehicle> findByBodyStyle(String bodyStyle);
+    long countDistinctUserIdByRoleEquals(UserRole role);
 }
