@@ -45,11 +45,6 @@ public class WebController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping({ "/", "/index-9" })
-    public String index(HttpSession session) {
-        return "index-9";
-    }
-
     @GetMapping("/faq")
     public String faq() {
         return "faq";
@@ -218,9 +213,7 @@ public class WebController {
 
             // Thống kê
             long totalVehicles = vehicleService.countTotalVehicles();
-            long totalDealers = vehicleService.countDealers();
             model.addAttribute("totalVehicles", totalVehicles);
-            model.addAttribute("totalDealers", totalDealers);
 
             return "index-9";
         } catch (Exception e) {
