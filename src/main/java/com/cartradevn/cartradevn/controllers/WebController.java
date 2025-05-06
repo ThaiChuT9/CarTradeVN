@@ -355,4 +355,31 @@ public class WebController {
         }
         return "redirect:/view-listings";
     }
+
+    @GetMapping("/vehicles/{id}")
+    public String viewVehicleDetails(@PathVariable Long id, Model model) {
+        try {
+            VehicleDTO vehicle = vehicleService.getVehicleById(id);
+            model.addAttribute("vehicle", vehicle);
+
+            // Get seller information
+            User seller = userRepo.findById(vehicle.getUserId())
+                .orElseThrow(() -> new RuntimeException("Seller not found"));
+            model.addAttribute("seller", seller);
+
+            // Get related vehicles (same brand or category)
+            List<VehicleDTO> relatedVehicles = vehicleService.getRelatedVehicles(
+                vehicle.getBrand(), 
+                vehicle.getBodyStyle(),
+                id,  // exclude current vehicle
+                4    // limit
+            );
+            model.addAttribute("relatedVehicles", relatedVehicles);
+
+            return "inventory-page-single-v2";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/";
+        }
+    }
 }

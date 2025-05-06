@@ -45,6 +45,15 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
         @Param("fuelType") String fuelType,
         Pageable pageable
     );
+
+    @Query("SELECT v FROM Vehicle v WHERE v.id != :excludeId AND" +
+           "(v.brand = :brand OR v.bodyStyle = :bodyStyle)")
+    List<Vehicle> findRelatedVehicles(
+        @Param("brand") String brand,
+        @Param("bodyStyle") String bodyStyle,
+        @Param("excludeId") Long excludeId,
+        Pageable pageable
+    );
     
     // Các phương thức tìm kiếm cơ bản
     List<Vehicle> findByCity(String city);
