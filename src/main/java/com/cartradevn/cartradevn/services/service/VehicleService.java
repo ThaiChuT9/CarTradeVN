@@ -1,5 +1,6 @@
 package com.cartradevn.cartradevn.services.service;
 
+import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.services.VehicleException;
@@ -250,6 +251,25 @@ public class VehicleService {
         } catch (Exception e) {
             throw new RuntimeException("Error searching vehicles: " + e.getMessage());
         }
+    }
+
+    public Page<VehicleDTO> getVehiclesByCondition(String condition, Pageable pageable) {
+        return vehicleRepo.findByCondition(condition, pageable)
+                .map(this::convertToDTO);
+    }
+
+    public List<VehicleDTO> getVehiclesByBodyStyle(String bodyStyle) {
+        return vehicleRepo.findByBodyStyle(bodyStyle).stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public long countTotalVehicles() {
+        return vehicleRepo.count();
+    }
+
+    public long countDealers() {
+        return vehicleRepo.countDistinctUserIdByRoleEquals(UserRole.SELLER);
     }
 
     

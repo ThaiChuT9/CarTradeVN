@@ -1,5 +1,9 @@
 package com.cartradevn.cartradevn.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -182,6 +186,47 @@ public class WebController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/profile";
+    }
+
+    @GetMapping({"/", "/index-9"})
+    public String index(Model model) {
+        try {
+            // Lấy danh sách xe mới
+            Page<VehicleDTO> newVehicles = vehicleService.getVehiclesByCondition(
+                "new", 
+                PageRequest.of(0, 8)
+            );
+            model.addAttribute("newVehicles", newVehicles.getContent());
+
+            // Lấy danh sách xe đã qua sử dụng
+            Page<VehicleDTO> usedVehicles = vehicleService.getVehiclesByCondition(
+                "used", 
+                PageRequest.of(0, 8)
+            );
+            model.addAttribute("usedVehicles", usedVehicles.getContent());
+
+            // Lấy danh sách xe theo từng loại body style
+            Map<String, List<VehicleDTO>> vehiclesByStyle = new HashMap<>();
+            String[] styles = {"TRUCK", "SEDAN", "COUPE", "CONVERTIBLE", "SUV", 
+                             "VAN", "HATCHBACK", "WAGON"};
+            
+            for (String style : styles) {
+                List<VehicleDTO> vehicles = vehicleService.getVehiclesByBodyStyle(style);
+                vehiclesByStyle.put(style.toLowerCase(), vehicles);
+            }
+            model.addAttribute("vehiclesByStyle", vehiclesByStyle);
+
+            // Thống kê
+            long totalVehicles = vehicleService.countTotalVehicles();
+            long totalDealers = vehicleService.countDealers();
+            model.addAttribute("totalVehicles", totalVehicles);
+            model.addAttribute("totalDealers", totalDealers);
+
+            return "index-9";
+        } catch (Exception e) {
+            model.addAttribute("error", "Error loading vehicles: " + e.getMessage());
+            return "index-9";
+        }
     }
 
     @GetMapping("/add-listings")
