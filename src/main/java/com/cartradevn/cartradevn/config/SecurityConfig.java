@@ -13,16 +13,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
+import com.cartradevn.cartradevn.administration.dto.RegisterDTO;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.administration.services.CustomUserDetailsService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Configuration
@@ -30,12 +34,15 @@ import jakarta.servlet.http.HttpSession;
 public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SecurityConfig(CustomUserDetailsService userDetailsService, UserRepo userRepo) {
+    public SecurityConfig(CustomUserDetailsService userDetailsService, UserRepo userRepo, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -111,12 +118,44 @@ public class SecurityConfig {
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
+        provider.setPasswordEncoder(passwordEncoder);
         return provider;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    // Add registration handler
+    public String handleRegistration(RegisterDTO registerDTO, HttpServletRequest request, HttpServletResponse response) {
+        try {
+            // Check if username or email already exists
+            if (userRepo.existsByUsername(registerDTO.getUsername())) {
+                response.sendRedirect("/register?error=Username đã tồn tại");
+                return null;
+            }
+            if (userRepo.existsByEmail(registerDTO.getEmail())) {
+                response.sendRedirect("/register?error=Email đã tồn tại");
+                return null;
+            }
+
+            // Create new user
+            User user = new User();
+            user.setUsername(registerDTO.getUsername());
+            user.setEmail(registerDTO.getEmail());
+            user.setPasswordHash(passwordEncoder.encode(registerDTO.getPassword()));
+            user.setRole(registerDTO.getRole());
+            user.setCreatedAt(System.currentTimeMillis());
+
+            // Save user
+            userRepo.save(user);
+
+            // Redirect to login page with success message
+            response.sendRedirect("/login?registered=true");
+            return null;
+        } catch (Exception e) {
+            try {
+                response.sendRedirect("/register?error=" + e.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return null;
+        }
     }
 }
