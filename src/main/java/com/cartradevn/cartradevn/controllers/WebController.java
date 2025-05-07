@@ -203,7 +203,7 @@ public class WebController {
             // Lấy danh sách xe theo từng loại body style
             Map<String, List<VehicleDTO>> vehiclesByStyle = new HashMap<>();
             String[] styles = {"TRUCK", "SEDAN", "COUPE", "CONVERTIBLE", "SUV", 
-                             "VAN", "HATCHBACK", "WAGON"};
+                               "VAN", "HATCHBACK", "WAGON"};
             
             for (String style : styles) {
                 List<VehicleDTO> vehicles = vehicleService.getVehiclesByBodyStyle(style);
