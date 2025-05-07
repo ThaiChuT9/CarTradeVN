@@ -14,7 +14,10 @@ import com.cartradevn.cartradevn.administration.dto.LoginDTO;
 import com.cartradevn.cartradevn.administration.dto.RegisterDTO;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.administration.services.AuthService;
+import com.cartradevn.cartradevn.config.SecurityConfig;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -27,10 +30,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
     private final AuthService authService;
+    private final SecurityConfig securityConfig;
 
     @Autowired
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, SecurityConfig securityConfig) {
         this.authService = authService;
+        this.securityConfig = securityConfig;
     }
 
     @GetMapping("/login")
@@ -40,15 +45,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute RegisterDTO registerDTO,
-                           RedirectAttributes redirectAttributes) {
-        try {
-            authService.register(registerDTO);
-            redirectAttributes.addFlashAttribute("S", "Đăng ký thành công");
-            return "redirect:/login";
-        } catch (RuntimeException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/register";
-        }
+                          HttpServletRequest request,
+                          HttpServletResponse response) {
+        return securityConfig.handleRegistration(registerDTO, request, response);
     }
 
     // @PostMapping("/login")
