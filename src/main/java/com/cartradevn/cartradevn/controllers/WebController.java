@@ -51,11 +51,30 @@ public class WebController {
     }
 
     @GetMapping("/login")
-    public String login(HttpSession session) {
+    public String login(HttpSession session, Model model, 
+                       @RequestParam(required = false) String error,
+                       @RequestParam(required = false) String logout,
+                       @RequestParam(required = false) String registered,
+                       @RequestParam(required = false) String expired) {
         // Nếu đã đăng nhập thì redirect về trang chủ
         if (session.getAttribute("user") != null) {
             return "redirect:/";
         }
+
+        // Xử lý các thông báo
+        if (error != null) {
+            model.addAttribute("error", error);
+        }
+        if (logout != null) {
+            model.addAttribute("message", "Bạn đã đăng xuất thành công");
+        }
+        if (registered != null) {
+            model.addAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập");
+        }
+        if (expired != null) {
+            model.addAttribute("error", "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại");
+        }
+
         return "login";
     }
 

@@ -66,6 +66,7 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/api/v1/auth/login")
+                .defaultSuccessUrl("/index-9", true) 
                 .successHandler((request, response, authentication) -> {
                     // Store user details in session
                     UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -89,12 +90,16 @@ public class SecurityConfig {
                     if (user.getRole() == UserRole.ADMIN) {
                         response.sendRedirect("/admin-dashboard");
                     } else {
-                        response.sendRedirect("/dashboard");
+                        response.sendRedirect("/index-9");
                     }
                 })
                 .failureHandler((request, response, exception) -> {
-                    System.out.println("Login failed: " + exception.getMessage());
-                    response.sendRedirect("/login?error=true");
+                    String errorMessage = "Invalid username or password";
+                    if (exception.getMessage() != null) {
+                        errorMessage = exception.getMessage();
+                    }
+                    System.out.println("Login failed: " + errorMessage);
+                    response.sendRedirect("/login?error=" + errorMessage);
                 })
                 .permitAll()
             )
