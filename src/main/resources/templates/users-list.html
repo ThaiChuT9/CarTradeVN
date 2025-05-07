@@ -42,48 +42,7 @@
                     </div>
 
                     <!--Nav Box-->
-                    <div class="nav-out-bar">    
-                        <nav class="nav main-menu">
-                            <ul class="navigation" id="navbar">
-                                <li class="current-dropdown"><span>Brands <i class="fa-solid fa-angle-down"></i></span>
-                                    <ul class="dropdown">
-                                        <li><a href="">Audi</a></li>
-                                        <li><a href="">BMW</a></li>
-                                        <li><a href="">Chevrolet</a></li>
-                                        <li><a href="">Ford</a></li>
-                                        <li><a href="">Honda</a></li>
-                                        <li><a href="">Hyundai</a></li>
-                                        <li><a href="">Mercedes-Benz</a></li>
-                                    </ul>
-                                </li>
-                                </li>
-                                <li class="current-dropdown"><span>Shop <i class="fa-solid fa-angle-down"></i></span>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-list">Shop List</a></li>
-                                        <li><a href="shop-single">Shop Single</a></li>
-                                        <li><a href="cart">Cart</a></li>
-                                        <li><a href="checkout">Checkout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="current-dropdown right-one"><span>Dashboard <i class="fa-solid fa-angle-down"></i></span>
-                                    <ul class="dropdown deep subnav-menu">
-                                        <li><a href="dashboard" title="">Dashboard</a></li>
-                                        <li><a href="my-listings" title="">My Listings</a></li>
-                                        <li><a href="add-listings" title="">Add Listings</a></li>
-                                        <li><a href="favorite" title="">Favorites</a></li>
-                                        <li><a href="saved" title="">Saved Search</a></li>
-                                        <li><a href="messages" title="">Messages</a></li>
-                                        <li><a href="profile" title="">Profile</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog-list-02">Blog</a>
-                                </li>
-                                <li><a href="contact">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- Main Menu End-->
-                    </div>
+                    <div th:replace="~{fragments/nav :: nav-box}"></div>
 
                     <div class="right-box">
                         <a href="#" class="haeder-img"><img src="/static/images/resource/header-img.png"></a>
@@ -198,7 +157,8 @@
                                             Created Date
                                         </td>
                                         <td>
-                                            <div class="action-buttons">
+                                            <!-- Chỉ hiển thị nút hành động nếu không phải là user đang đăng nhập -->
+                                            <div class="action-buttons" th:if="${user.id != session.user.id}">
                                                 <a th:href="@{/users/edit/{id}(id=${user.id})}" class="remove-cart-item">
                                                     <img src="/static/images/icons/edit.svg" alt="Edit">
                                                 </a>
@@ -207,6 +167,9 @@
                                                    onclick="return confirm('Are you sure you want to delete this user?')">
                                                     <img src="/static/images/icons/remove.svg" alt="Delete">
                                                 </a>
+                                            </div>
+                                            <div class="action-buttons" th:if="${user.id == session.user.id}">
+                                                <span class="text-muted">Current User</span>
                                             </div>
                                         </td>
                                     </tr>
