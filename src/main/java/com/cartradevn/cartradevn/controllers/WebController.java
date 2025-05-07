@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import java.util.List;
 
-import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
 import com.cartradevn.cartradevn.administration.dto.UserUpdateDTO;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.services.dto.VehicleDTO;
 import com.cartradevn.cartradevn.services.repository.VehicleRepo;
+import com.cartradevn.cartradevn.services.service.ImageService;
 import com.cartradevn.cartradevn.services.service.VehicleService;
 
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -33,13 +34,15 @@ public class WebController {
     private final PasswordEncoder passwordEncoder;
     private final VehicleRepo vehicleRepo;
     private final VehicleService vehicleService;
+    private final ImageService imageService;
 
     @Autowired
-    public WebController(UserRepo userRepo, PasswordEncoder passwordEncoder, VehicleRepo vehicleRepo, VehicleService vehicleService) {
+    public WebController(UserRepo userRepo, PasswordEncoder passwordEncoder, VehicleRepo vehicleRepo, VehicleService vehicleService, ImageService imageService) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
         this.vehicleRepo = vehicleRepo;
         this.vehicleService = vehicleService;
+        this.imageService = imageService;
     }
 
     @GetMapping({ "/", "/index-9" })
@@ -102,7 +105,7 @@ public class WebController {
     }
 
     @GetMapping("/admin-profile")
-    public String profile(HttpSession session, Model model) {
+    public String adminProfile(HttpSession session, Model model) {
         return "redirect:/login";
     }
 
@@ -139,11 +142,13 @@ public class WebController {
     public String profile(Model model, HttpSession session) {
         try {
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                return "redirect:/login";
+            }
 
             User user = userRepo.findById(userSession.getId())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
-            // Add debug logging
             System.out.println("Found user: " + user.getUsername());
 
             model.addAttribute("user", user);
@@ -160,6 +165,10 @@ public class WebController {
             RedirectAttributes redirectAttributes) {
         try {
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                return "redirect:/login";
+            }
+
             User user = userRepo.findById(userSession.getId())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -188,6 +197,9 @@ public class WebController {
     @GetMapping("/add-listings")
     public String showAddListingForm(Model model, HttpSession session) {
         UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+        if (userSession == null) {
+            return "redirect:/login";
+        }
         return "add-listings";
     }
 
@@ -198,13 +210,20 @@ public class WebController {
             HttpSession session,
             RedirectAttributes redirectAttributes) {
         try {
-            // Get logged in user
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                redirectAttributes.addFlashAttribute("error", "Please login to add a listing");
+                return "redirect:/login";
+            }
 
-            // Set user ID
             vehicleDTO.setUserId(userSession.getId());
 
-            // Create vehicle
+            // Handle image uploads
+            if (images != null && images.length > 0) {
+                List<String> imageUrls = imageService.saveImages(images);
+                vehicleDTO.setImageUrl(String.join(",", imageUrls));
+            }
+
             VehicleDTO created = vehicleService.createVehicle(vehicleDTO);
             redirectAttributes.addFlashAttribute("success", "Vehicle added successfully");
             return "redirect:/my-listings";

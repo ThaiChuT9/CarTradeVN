@@ -1,6 +1,7 @@
 package com.cartradevn.cartradevn.services.entity;
 
 import java.time.LocalDateTime;
+
 import com.cartradevn.cartradevn.administration.entity.User;
 
 import jakarta.persistence.*;
@@ -34,28 +35,28 @@ public class Vehicle {
     private String color;
 
     @Column(nullable = false)
-    private Integer mileage;  // Add mileage field
+    private Integer mileage;
 
     @Column(name = "transmission", nullable = false)
-    private String transmission;  // Add transmission field (Auto/Manual)
+    private String transmission;
 
     @Column(name = "body_style", nullable = false)
-    private String bodyStyle;  // Add body style field (Sedan/SUV/etc)
+    private String bodyStyle;
 
     @Column(name = "vehicle_condition", nullable = false)
     private String condition;
 
     @Column(name = "fuel_type", nullable = false)
-    private String fuelType; // Petrol/Electric/...
+    private String fuelType;
 
     @Column(name = "engine_size", nullable = false)
-    private Double engineSize; // Engine size in liters
+    private Double engineSize;
 
     @Column(nullable = false)
-    private Integer doors; // Number of doors
+    private Integer doors;
 
     @Column(nullable = false)
-    private Integer cylinders; // Number of cylinders
+    private Integer cylinders;
 
     @Column(nullable = false)
     private Double price;
@@ -66,10 +67,10 @@ public class Vehicle {
     @Column(length = 1000)
     private String description;
 
-    private String imageUrl; // URL to the vehicle image
+    private String imageUrl;
 
     @Column(nullable = false)
-    private String status; // pending/approved/sold
+    private String status;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

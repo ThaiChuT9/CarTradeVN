@@ -5,13 +5,12 @@ import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.services.VehicleException;
 import com.cartradevn.cartradevn.services.dto.VehicleDTO;
 import com.cartradevn.cartradevn.services.entity.Vehicle;
+import com.cartradevn.cartradevn.services.repository.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.cartradevn.cartradevn.services.repository.VehicleRepo;
 
 import jakarta.validation.Valid;
 
@@ -25,7 +24,7 @@ public class VehicleService {
     private final UserRepo userRepo;
 
     @Autowired
-    private VehicleService(VehicleRepo vehicleRepo, UserRepo userRepo) {
+    public VehicleService(VehicleRepo vehicleRepo, UserRepo userRepo) {
         this.vehicleRepo = vehicleRepo;
         this.userRepo = userRepo;
     }
@@ -33,7 +32,6 @@ public class VehicleService {
     // Lấy danh sách tất cả xe
     public List<VehicleDTO> getAllVehicles() {
         List<Vehicle> vehicles = vehicleRepo.findAll();
-        // chuyển đổi danh sách xe thành danh sách DTO
         return vehicles.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -42,7 +40,7 @@ public class VehicleService {
             String condition, String fuelType, Integer mileage, String transmission, String bodyStyle) {
         List<Vehicle> vehicles = vehicleRepo.findAll();
 
-        // áp dụng bộ lọc
+        // Áp dụng bộ lọc
         if (name != null) {
             vehicles = vehicles.stream()
                     .filter(v -> v.getName().toLowerCase().contains(name.toLowerCase()))
@@ -86,7 +84,6 @@ public class VehicleService {
                     .filter(v -> v.getBodyStyle().equalsIgnoreCase(bodyStyle))
                     .collect(Collectors.toList());
         }
-        // chuyển đổi danh sách xe thành danh sách DTO
         return vehicles.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -110,22 +107,18 @@ public class VehicleService {
             vehicle.setPrice(vehicleDTO.getPrice());
             vehicle.setCity(vehicleDTO.getCity());
             vehicle.setDescription(vehicleDTO.getDescription());
-            vehicle.setImageUrl(vehicleDTO.getImageUrl()); // Set image URL if provided
+            vehicle.setImageUrl(vehicleDTO.getImageUrl());
             vehicle.setMileage(vehicleDTO.getMileage());
             vehicle.setTransmission(vehicleDTO.getTransmission());
             vehicle.setBodyStyle(vehicleDTO.getBodyStyle());
             vehicle.setEngineSize(vehicleDTO.getEngineSize());
             vehicle.setDoors(vehicleDTO.getDoors());
             vehicle.setCylinders(vehicleDTO.getCylinders());
-            vehicle.setStatus("pending"); // Trạng thái mặc định là 'pending'
-            vehicle.setCreatedAt(LocalDateTime.now()); // Set createdAt to current time
-            vehicle.setUser(user); // Set user
-            // Lưu xe vào cơ sở dữ liệu
+            vehicle.setStatus("pending");
+            vehicle.setCreatedAt(LocalDateTime.now());
+            vehicle.setUser(user);
             Vehicle savedVehicle = vehicleRepo.save(vehicle);
-            // Chuyển đổi xe đã lưu thành DTO
             return convertToDTO(savedVehicle);
-        } catch (DataIntegrityViolationException e) {
-            throw new VehicleException("Lỗi dữ liệu: " + e.getMessage());
         } catch (Exception e) {
             throw new VehicleException("Lỗi khi tạo xe: " + e.getMessage());
         }
@@ -135,7 +128,7 @@ public class VehicleService {
     private VehicleDTO convertToDTO(Vehicle vehicle) {
         VehicleDTO vehicleDTO = new VehicleDTO();
         vehicleDTO.setId(vehicle.getId());
-        vehicleDTO.setUserId(vehicle.getUser().getId()); // Lấy ID của người dùng từ đối tượng Vehicle
+        vehicleDTO.setUserId(vehicle.getUser().getId());
         vehicleDTO.setBrand(vehicle.getBrand());
         vehicleDTO.setModel(vehicle.getModel());
         vehicleDTO.setName(vehicle.getName()); 
@@ -146,7 +139,7 @@ public class VehicleService {
         vehicleDTO.setPrice(vehicle.getPrice());
         vehicleDTO.setCity(vehicle.getCity());
         vehicleDTO.setDescription(vehicle.getDescription());
-        vehicleDTO.setImageUrl(vehicle.getImageUrl()); // Lấy URL hình ảnh từ đối tượng Vehicle
+        vehicleDTO.setImageUrl(vehicle.getImageUrl());
         vehicleDTO.setMileage(vehicle.getMileage());
         vehicleDTO.setTransmission(vehicle.getTransmission());
         vehicleDTO.setBodyStyle(vehicle.getBodyStyle());
@@ -155,7 +148,7 @@ public class VehicleService {
         vehicleDTO.setCylinders(vehicle.getCylinders());
         vehicleDTO.setStatus(vehicle.getStatus());
         if (vehicle.getCreatedAt() != null) {
-            vehicleDTO.setCreatedAt(vehicle.getCreatedAt().toString()); // Chuyển đổi LocalDateTime thành String
+            vehicleDTO.setCreatedAt(vehicle.getCreatedAt().toString());
         } else {
             vehicleDTO.setCreatedAt(null);
         }
@@ -173,7 +166,6 @@ public class VehicleService {
             Vehicle existingVehicle = vehicleRepo.findById(id)
                     .orElseThrow(() -> new VehicleException("Không tìm thấy xe với id: " + id));
 
-            // Cập nhật thông tin xe
             existingVehicle.setBrand(vehicleDTO.getBrand());
             existingVehicle.setModel(vehicleDTO.getModel());
             existingVehicle.setName(vehicleDTO.getName());
@@ -184,21 +176,16 @@ public class VehicleService {
             existingVehicle.setPrice(vehicleDTO.getPrice());
             existingVehicle.setCity(vehicleDTO.getCity());
             existingVehicle.setDescription(vehicleDTO.getDescription());
-            existingVehicle.setImageUrl(vehicleDTO.getImageUrl()); // Cập nhật URL hình ảnh nếu có
+            existingVehicle.setImageUrl(vehicleDTO.getImageUrl());
             existingVehicle.setMileage(vehicleDTO.getMileage());
             existingVehicle.setTransmission(vehicleDTO.getTransmission());
             existingVehicle.setBodyStyle(vehicleDTO.getBodyStyle());
             existingVehicle.setEngineSize(vehicleDTO.getEngineSize());
             existingVehicle.setDoors(vehicleDTO.getDoors());
             existingVehicle.setCylinders(vehicleDTO.getCylinders());
-            // Không cập nhật status và createdAt vì đây là thông tin hệ thống
 
             Vehicle updatedVehicle = vehicleRepo.save(existingVehicle);
             return convertToDTO(updatedVehicle);
-        } catch (DataIntegrityViolationException e) {
-            throw new VehicleException("Lỗi dữ liệu khi cập nhật xe: " + e.getMessage());
-        } catch (VehicleException e) {
-            throw e;
         } catch (Exception e) {
             throw new VehicleException("Lỗi khi cập nhật xe: " + e.getMessage());
         }
@@ -210,8 +197,6 @@ public class VehicleService {
                 throw new VehicleException("Không tìm thấy xe với id: " + id);
             }
             vehicleRepo.deleteById(id);
-        } catch (DataIntegrityViolationException e) {
-            throw new VehicleException("Không thể xóa xe do ràng buộc dữ liệu");
         } catch (Exception e) {
             throw new VehicleException("Lỗi khi xóa xe: " + e.getMessage());
         }
@@ -251,6 +236,4 @@ public class VehicleService {
             throw new RuntimeException("Error searching vehicles: " + e.getMessage());
         }
     }
-
-    
 }

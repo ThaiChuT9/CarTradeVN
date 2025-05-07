@@ -17,8 +17,6 @@ import org.springframework.data.repository.query.Param;
 @Repository
 public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     // Tìm kiếm xe theo ID
-    // Sử dụng Optional để tránh NullPointerException
-    // Thay đổi findById để trả về Optional
     Optional<Vehicle> findById(Long id);
     
     // Thêm phương thức tìm kiếm với nhiều tiêu chí
