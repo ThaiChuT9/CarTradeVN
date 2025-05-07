@@ -149,244 +149,236 @@
             <div class="container">
                 <div class="banner-content">
                     <div class="form-tabs">
-                        <ul class="form-tabs-list wow fadeInUp" data-wow-delay="200ms">
-                            <li class="current" data-tab="tab-1">All</li>
-                            <li data-tab="tab-2">New</li>
-                            <li data-tab="tab-3">Used</li>
-                        </ul>
-                        <div class="form-tab-content">
-                            <div class="form-tab-content wow fadeInUp" data-wow-delay="300ms">
-                                <div class="form-tab-pane current" id="tab-1">
-                                    <form action="/show-search" method="GET">
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Brands</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="brand" id="brand">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setBrand('Toyota')">Toyota</li>
-                                                    <li onclick="setBrand('Honda')">Honda</li>
-                                                    <li onclick="setBrand('Hyundai')">Hyundai</li>
-                                                    <li onclick="setBrand('Mercedes-Benz')">Mercedes-Benz</li>
-                                                    <li onclick="setBrand('BMW')">BMW</li>
-                                                    <li onclick="setBrand('Ford')">Ford</li>
-                                                    <li onclick="setBrand('Kia')">Kia</li>
-                                                    <li onclick="setBrand('Volkswagen')">Volkswagen</li>
-                                                    <li onclick="setBrand('Mazda')">Mazda</li>
-                                                    <li onclick="setBrand('Mitsubishi')">Mitsubishi</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Models</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="displdo: none;">
-                                                    <li onclick="setModel('Truck')">Truck</li>
-                            <li onclick="setModel('Sedan')">Sedan</li>
-                            <li onclick="setModel('Coupe')">Coupe</li>
-                            <li onclick="setModel('Convertible')">Convertible</li>
-                            <li onclick="setModel('SUV')">SUV</li>
-                            <li onclick="setModel('VAN')">VAN</li>
-                            <li onclick="setModel('Hatchback')">Hatchback</li>
-                            <li onclick="setModel('Wagon')">Wagon</li>
-                            <li onclick="setModel('Hybrid')">Hybrid</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Fuel</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setFuelType('Diesel')">Diesel</li>
-                            <li onclick="setFuelType('Gasoline')">Gasoline</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Price</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setPriceRange('< $20.000')">< $20.000</li>
-                            <li onclick="setPriceRange('$20k ~ $50k')">$20k ~ $50k</li>
-                            <li onclick="setPriceRange('> $50.000')">> $50.000</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form-submit">
-                                            <button type="submit" class="theme-btn"><i
-                                                    class="flaticon-search"></i>Search for Cars</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="form-tab-pane" id="tab-2">
-                                    <form>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Brands</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="brand" id="brand">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setBrand('Toyota')">Toyota</li>
-                                                    <li onclick="setBrand('Honda')">Honda</li>
-                                                    <li onclick="setBrand('Hyundai')">Hyundai</li>
-                                                    <li onclick="setBrand('Mercedes-Benz')">Mercedes-Benz</li>
-                                                    <li onclick="setBrand('BMW')">BMW</li>
-                                                    <li onclick="setBrand('Ford')">Ford</li>
-                                                    <li onclick="setBrand('Kia')">Kia</li>
-                                                    <li onclick="setBrand('Volkswagen')">Volkswagen</li>
-                                                    <li onclick="setBrand('Mazda')">Mazda</li>
-                                                    <li onclick="setBrand('Mitsubishi')">Mitsubishi</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Models</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setModel('Truck')">Truck</li>
-                            <li onclick="setModel('Sedan')">Sedan</li>
-                            <li onclick="setModel('Coupe')">Coupe</li>
-                            <li onclick="setModel('Convertible')">Convertible</li>
-                            <li onclick="setModel('SUV')">SUV</li>
-                            <li onclick="setModel('VAN')">VAN</li>
-                            <li onclick="setModel('Hatchback')">Hatchback</li>
-                            <li onclick="setModel('Wagon')">Wagon</li>
-                            <li onclick="setModel('Hybrid')">Hybrid</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Fuel</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setFuelType('Diesel')">Diesel</li>
-                            <li onclick="setFuelType('Gasoline')">Gasoline</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Price</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setPriceRange('< $20.000')">< $20.000</li>
-                            <li onclick="setPriceRange('$20k ~ $50k')">$20k ~ $50k</li>
-                            <li onclick="setPriceRange('> $50.000')">> $50.000</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form-submit">
-                                            <button type="submit" class="theme-btn"><i
-                                                    class="flaticon-search"></i>Search 9451 Cars</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="form-tab-pane" id="tab-3">
-                                    <form>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Brands</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="brand" id="brand">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setBrand('Toyota')">Toyota</li>
-                                                    <li onclick="setBrand('Honda')">Honda</li>
-                                                    <li onclick="setBrand('Hyundai')">Hyundai</li>
-                                                    <li onclick="setBrand('Mercedes-Benz')">Mercedes-Benz</li>
-                                                    <li onclick="setBrand('BMW')">BMW</li>
-                                                    <li onclick="setBrand('Ford')">Ford</li>
-                                                    <li onclick="setBrand('Kia')">Kia</li>
-                                                    <li onclick="setBrand('Volkswagen')">Volkswagen</li>
-                                                    <li onclick="setBrand('Mazda')">Mazda</li>
-                                                    <li onclick="setBrand('Mitsubishi')">Mitsubishi</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Models</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setModel('Truck')">Truck</li>
-                            <li onclick="setModel('Sedan')">Sedan</li>
-                            <li onclick="setModel('Coupe')">Coupe</li>
-                            <li onclick="setModel('Convertible')">Convertible</li>
-                            <li onclick="setModel('SUV')">SUV</li>
-                            <li onclick="setModel('VAN')">VAN</li>
-                            <li onclick="setModel('Hatchback')">Hatchback</li>
-                            <li onclick="setModel('Wagon')">Wagon</li>
-                            <li onclick="setModel('Hybrid')">Hybrid</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes line-r">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Fuel</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setFuelType('Diesel')">Diesel</li>
-                            <li onclick="setFuelType('Gasoline')">Gasoline</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form_boxes">
-                                            <div class="drop-menu">
-                                                <div class="select">
-                                                    <span>Price</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                                <input type="hidden" name="gender">
-                                                <ul class="dropdown" style="display: none;">
-                                                    <li onclick="setPriceRange('< $20.000')">< $20.000</li>
-                            <li onclick="setPriceRange('$20k ~ $50k')">$20k ~ $50k</li>
-                            <li onclick="setPriceRange('> $50.000')">> $50.000</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="form-submit">
-                                            <button type="submit" class="theme-btn"><i
-                                                    class="flaticon-search"></i>Search 9451 Cars</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+    <ul class="form-tabs-list wow fadeInUp" data-wow-delay="200ms">
+        <li class="current" data-tab="tab-1">All</li>
+        <li data-tab="tab-2">New</li>
+        <li data-tab="tab-3">Used</li>
+    </ul>
+    <div class="form-tab-content wow fadeInUp" data-wow-delay="300ms">
+    <div class="form-tab-pane current" id="tab-1">
+        <form action="/show-search" method="GET">
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Brands</span>
+                        <i class="fa fa-angle-down"></i>
                     </div>
+                    <input type="hidden" name="brand" id="brand-tab-1">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('brand-tab-1', 'Toyota')">Toyota</li>
+                        <li onclick="setValue('brand-tab-1', 'Honda')">Honda</li>
+                        <li onclick="setValue('brand-tab-1', 'Hyundai')">Hyundai</li>
+                        <li onclick="setValue('brand-tab-1', 'Mercedes-Benz')">Mercedes-Benz</li>
+                        <li onclick="setValue('brand-tab-1', 'BMW')">BMW</li>
+                        <li onclick="setValue('brand-tab-1', 'Ford')">Ford</li>
+                        <li onclick="setValue('brand-tab-1', 'Kia')">Kia</li>
+                        <li onclick="setValue('brand-tab-1', 'Volkswagen')">Volkswagen</li>
+                        <li onclick="setValue('brand-tab-1', 'Mazda')">Mazda</li>
+                        <li onclick="setValue('brand-tab-1', 'Mitsubishi')">Mitsubishi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Models</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="bodyStyle" id="bodyStyle-tab-1">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('bodyStyle-tab-1', 'Sedan')">Sedan</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'Coupe')">Coupe</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'Convertible')">Convertible</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'SUV')">SUV</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'VAN')">VAN</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'Hatchback')">Hatchback</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'Wagon')">Wagon</li>
+                        <li onclick="setValue('bodyStyle-tab-1', 'Hybrid')">Hybrid</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Fuel</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="fuelType" id="fuelType-tab-1">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('fuelType-tab-1', 'Diesel')">Diesel</li>
+                        <li onclick="setValue('fuelType-tab-1', 'Gasoline')">Gasoline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Price</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="priceRange" id="priceRange-tab-1">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('priceRange-tab-1', '< $20.000')">< $20.000</li>
+                        <li onclick="setValue('priceRange-tab-1', '$20k ~ $50k')">$20k ~ $50k</li>
+                        <li onclick="setValue('priceRange-tab-1', '> $50.000')">> $50.000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Search for Cars</button>
+            </div>
+        </form>
+    </div>
+    <div class="form-tab-pane" id="tab-2">
+        <form action="/show-search" method="GET">
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Brands</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="brand" id="brand-tab-2">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('brand-tab-2', 'Toyota')">Toyota</li>
+                        <li onclick="setValue('brand-tab-2', 'Honda')">Honda</li>
+                        <li onclick="setValue('brand-tab-2', 'Hyundai')">Hyundai</li>
+                        <li onclick="setValue('brand-tab-2', 'Mercedes-Benz')">Mercedes-Benz</li>
+                        <li onclick="setValue('brand-tab-2', 'BMW')">BMW</li>
+                        <li onclick="setValue('brand-tab-2', 'Ford')">Ford</li>
+                        <li onclick="setValue('brand-tab-2', 'Kia')">Kia</li>
+                        <li onclick="setValue('brand-tab-2', 'Volkswagen')">Volkswagen</li>
+                        <li onclick="setValue('brand-tab-2', 'Mazda')">Mazda</li>
+                        <li onclick="setValue('brand-tab-2', 'Mitsubishi')">Mitsubishi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Models</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="bodyStyle" id="bodyStyle-tab-2">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('bodyStyle-tab-2', 'Sedan')">Sedan</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'Coupe')">Coupe</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'Convertible')">Convertible</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'SUV')">SUV</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'VAN')">VAN</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'Hatchback')">Hatchback</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'Wagon')">Wagon</li>
+                        <li onclick="setValue('bodyStyle-tab-2', 'Hybrid')">Hybrid</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Fuel</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="fuelType" id="fuelType-tab-2">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('fuelType-tab-2', 'Diesel')">Diesel</li>
+                        <li onclick="setValue('fuelType-tab-2', 'Gasoline')">Gasoline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Price</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="priceRange" id="priceRange-tab-2">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('priceRange-tab-2', '< $20.000')">< $20.000</li>
+                        <li onclick="setValue('priceRange-tab-2', '$20k ~ $50k')">$20k ~ $50k</li>
+                        <li onclick="setValue('priceRange-tab-2', '> $50.000')">> $50.000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Search for Cars</button>
+            </div>
+        </form>
+    </div>
+    <div class="form-tab-pane" id="tab-3">
+        <form action="/show-search" method="GET">
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Brands</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="brand" id="brand-tab-3">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('brand-tab-3', 'Toyota')">Toyota</li>
+                        <li onclick="setValue('brand-tab-3', 'Honda')">Honda</li>
+                        <li onclick="setValue('brand-tab-3', 'Hyundai')">Hyundai</li>
+                        <li onclick="setValue('brand-tab-3', 'Mercedes-Benz')">Mercedes-Benz</li>
+                        <li onclick="setValue('brand-tab-3', 'BMW')">BMW</li>
+                        <li onclick="setValue('brand-tab-3', 'Ford')">Ford</li>
+                        <li onclick="setValue('brand-tab-3', 'Kia')">Kia</li>
+                        <li onclick="setValue('brand-tab-3', 'Volkswagen')">Volkswagen</li>
+                        <li onclick="setValue('brand-tab-3', 'Mazda')">Mazda</li>
+                        <li onclick="setValue('brand-tab-3', 'Mitsubishi')">Mitsubishi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Models</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="bodyStyle" id="bodyStyle-tab-3">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('bodyStyle-tab-3', 'Sedan')">Sedan</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'Coupe')">Coupe</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'Convertible')">Convertible</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'SUV')">SUV</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'VAN')">VAN</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'Hatchback')">Hatchback</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'Wagon')">Wagon</li>
+                        <li onclick="setValue('bodyStyle-tab-3', 'Hybrid')">Hybrid</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Fuel</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="fuelType" id="fuelType-tab-3">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('fuelType-tab-3', 'Diesel')">Diesel</li>
+                        <li onclick="setValue('fuelType-tab-3', 'Gasoline')">Gasoline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form_boxes">
+                <div class="drop-menu">
+                    <div class="select">
+                        <span>Price</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <input type="hidden" name="priceRange" id="priceRange-tab-3">
+                    <ul class="dropdown" style="display: none;">
+                        <li onclick="setValue('priceRange-tab-3', '< $20.000')">< $20.000</li>
+                        <li onclick="setValue('priceRange-tab-3', '$20k ~ $50k')">$20k ~ $50k</li>
+                        <li onclick="setValue('priceRange-tab-3', '> $50.000')">> $50.000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Search for Cars</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
                     <div class="content-box">
                         <span class="wow fadeInUp">We make finding the right car simple</span>
                         <h2 class="wow fadeInUp" data-wow-delay="100ms">Search Less. Live More.</h2>
@@ -3189,144 +3181,44 @@
     <script src="/static/js/knob.js"></script>
     <script src="/static/js/mmenu.js"></script>
     <script src="/static/js/main.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.drop-menu .select').click(function(){
-                $(this).parent().find('.dropdown').toggle();
-            });
+    <script src="/static/js/jquery.js"></script>
+<script>
+$(document).ready(function() {
+    // Xử lý sự kiện click cho dropdown
+    $('.drop-menu .select').click(function() {
+        $(this).parent().find('.dropdown').toggle();
+    });
 
-            $('.drop-menu .dropdown li').click(function(){
-                var value = $(this).text();
-                $(this).parent().parent().find('.select span').text(value);
-                $(this).parent().hide();
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Gọi API để lấy danh sách xe
-            fetch("http://localhost:8080/api/cars")
-                .then(response => response.json())
-                .then(data => {
-                    // Lấy xe đầu tiên từ danh sách
-                    const vehicle = data[0]; // Hiển thị xe đầu tiên, bạn có thể lặp qua nhiều xe nếu cần
-        
-                    // Cập nhật nội dung động
-                    document.getElementById("vehicle-image").src = vehicle.imageUrl || "/static/images/resource/shop3-1.jpg"; // Hiển thị hình ảnh từ API, fallback nếu không có
-                    document.getElementById("vehicle-name").textContent = vehicle.name || "Unknown Vehicle";
-                    document.getElementById("vehicle-model").textContent = vehicle.model && vehicle.model.length > 30 ? vehicle.model.substring(0, 30) + "..." : (vehicle.model || "N/A");
-                    document.getElementById("vehicle-seller").textContent = vehicle.user ? "Posted by: " + vehicle.user.username : "Posted by: Unknown";
-                    document.getElementById("vehicle-mileage").textContent = vehicle.mileage ? vehicle.mileage.toLocaleString() : "N/A";
-                    document.getElementById("vehicle-mileage-label").textContent = vehicle.mileage < 50000 ? "Low Mileage" : "High Mileage"; // Cập nhật nhãn dựa trên số dặm
-                    document.getElementById("vehicle-fuel-type").textContent = vehicle.fuelType || "N/A";
-                    document.getElementById("vehicle-transmission").textContent = vehicle.transmission || "N/A";
-                    document.getElementById("vehicle-year").textContent = vehicle.year || "N/A";
-                    document.getElementById("vehicle-price").textContent = vehicle.price ? "$" + vehicle.price.toLocaleString() : "$N/A";
-                })
-                .catch(error => {
-                    console.error("Error fetching vehicle data:", error);
-                    document.getElementById("vehicle-content").innerHTML = "<p>Failed to load vehicle data. Please try again later.</p>";
-                });
-        });
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Gọi API để lấy danh sách xe
-                fetch("http://localhost:8080/api/cars")
-                    .then(response => response.json())
-                    .then(data => {
-                        const vehicleList = document.getElementById("vehicle-list");
-                        vehicleList.innerHTML = ""; // Xóa nội dung tĩnh ban đầu
-            
-                        // Duyệt qua danh sách xe từ API
-                        data.forEach(vehicle => {
-                            // Tạo nhãn dựa trên mileage và price
-                            const label = vehicle.mileage < 50000 ? "Low Mileage" : (vehicle.price < 20000 ? "Great Price" : "");
-            
-                            // Giới hạn mô hình xe trong 30 ký tự
-                            const modelText = vehicle.model && vehicle.model.length > 30 
-                                ? vehicle.model.substring(0, 30) + "..." 
-                                : (vehicle.model || "N/A");
-            
-                            // Tạo HTML cho mỗi xe
-                            const vehicleHtml = `
-                                <div class="car-block-eleven col-lg-3 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <div class="image-box${label === "Great Price" ? " two" : ""}">
-                                            <figure class="image">
-                                                <a href="#"><img src="${vehicle.imageUrl || "/static/images/resource/shop3-1.jpg"}" alt="Vehicle Image"></a>
-                                            </figure>
-                                            ${label ? `<span>${label}</span>` : ""}
-                                            <a href="#" title="" class="icon-box">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                    <g clip-path="url(#clip0_601_1274)">
-                                                        <path d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z" fill="black" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_601_1274">
-                                                            <rect width="12" height="12" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div class="content-box">
-                                            <h6 class="title"><a href="#">${vehicle.name || "Unknown Vehicle"}</a></h6>
-                                            <div class="text">${modelText}</div>
-                                            <ul>
-                                                <li><i class="flaticon-speedometer"></i>${vehicle.mileage ? vehicle.mileage.toLocaleString() : "N/A"} miles</li>
-                                                <li><i class="flaticon-gasoline-pump"></i>${vehicle.fuelType || "N/A"}</li>
-                                                <li><i class="flaticon-gearbox"></i>${vehicle.transmission || "N/A"}</li>
-                                                <li>
-                                                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <g clip-path="url(#clip0_2861_4601)">
-                                                            <mask id="mask0_2861_4601" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="17">
-                                                                <path d="M0 0.692385H16V16.6924H0V0.692385Z" fill="white" />
-                                                            </mask>
-                                                            <g mask="url(#mask0_2861_4601)">
-                                                                <path d="M7.38541 13.0049H8.61456M11.08 13.0049H12.3092M3.69791 13.0049H4.92706M7.38541 9.31738H8.61456M11.08 9.31738H12.3092M3.69791 9.31738H4.92706M0.625 6.23404H15.3821M11.6946 4.39029V1.31738M4.3125 4.39029V1.31738M3.09044 16.0674H12.9167C14.2783 16.0674 15.3821 14.9636 15.3821 13.6019V5.01201C15.3821 3.65038 14.2783 2.54654 12.9167 2.54654H3.09044C1.72881 2.54654 0.625 3.65038 0.625 5.01201V13.6019C0.625 14.9636 1.72881 16.0674 3.09044 16.0674Z" stroke="black" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </g>
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2861_4601">
-                                                                <rect width="16" height="16" fill="white" transform="translate(0 0.692383)" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg>
-                                                    ${vehicle.year || "N/A"}
-                                                </li>
-                                            </ul>
-                                            <div class="btn-box">
-                                                <small>${vehicle.price ? "$" + vehicle.price.toLocaleString() : "$N/A"}</small>
-                                                <a href="#" class="details">View Details
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                        <g clip-path="url(#clip0_601_4346)">
-                                                            <path d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z" fill="#405FF2" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_601_4346">
-                                                                <rect width="14" height="14" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-            
-                            // Thêm xe vào danh sách
-                            vehicleList.insertAdjacentHTML("beforeend", vehicleHtml);
-                        });
-                    })
-                    .catch(error => {
-                        console.error("Error fetching vehicle data:", error);
-                        const vehicleList = document.getElementById("vehicle-list");
-                        vehicleList.innerHTML = "<p>Failed to load vehicle data. Please try again later.</p>";
-                    });
-            });
-            </script>
+    // Hàm chung để đặt giá trị cho input ẩn
+    window.setValue = function(inputId, value) {
+        const input = document.getElementById(inputId);
+        if (input) {
+            input.value = value;
+            $(input).parent().find('.select span').text(value);
+            $(input).parent().find('.dropdown').hide();
+        }
+    };
+
+    // Xử lý submit form tìm kiếm
+    $('form[action="/show-search"]').on('submit', function(e) {
+        e.preventDefault(); // Ngăn chặn submit mặc định
+
+        // Lấy tab active
+        const activeTab = $('.form-tab-pane.current');
+        const tabId = activeTab.attr('id');
+
+        // Lấy giá trị từ input ẩn dựa trên tab active
+        let brand = $(`#brand-${tabId}`).val() || '';
+        let bodyStyle = $(`#bodyStyle-${tabId}`).val() || '';
+        let fuelType = $(`#fuelType-${tabId}`).val() || '';
+        let priceRange = $(`#priceRange-${tabId}`).val() || '';
+
+        // Xây dựng query string
+        const queryString = `?brand=${encodeURIComponent(brand)}&bodyStyle=${encodeURIComponent(bodyStyle)}&fuelType=${encodeURIComponent(fuelType)}&priceRange=${encodeURIComponent(priceRange)}`;
+        window.location.href = `/show-search${queryString}`;
+    });
+});
+</script>
 </body>
 
 <!-- Mirrored from creativelayers.net/themes/boxcar-html/index-9.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Dec 2024 05:57:25 GMT -->

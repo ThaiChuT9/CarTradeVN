@@ -50,6 +50,11 @@ public class WebController {
         return "index-9";
     }
 
+    @GetMapping({"/shop-list" })
+    public String shopList(HttpSession session) {
+        return "shop-list";
+    }
+
     @GetMapping("/faq")
     public String faq() {
         return "faq";
@@ -334,7 +339,7 @@ public class WebController {
     @GetMapping("/show-search")
     public String showSearch(
         @RequestParam(name = "brand", required = false) String brand,
-        @RequestParam(name = "model", required = false) String model,
+        @RequestParam(name = "bodyStyle", required = false) String bodyStyle,
         @RequestParam(name = "fuelType", required = false) String fuelType,
         @RequestParam(name = "priceRange", required = false) String priceRange,
         Model viewModel
@@ -359,8 +364,8 @@ public class WebController {
             }
         }
 
-        List<VehicleDTO> vehicles = vehicleService.getVehicles(null, brand, null, null, model, minPrice, maxPrice, null, fuelType, null, null, null);
-        viewModel.addAttribute("vehicles", vehicles);
-        return "show-search";
+        List<VehicleDTO> vehicles = vehicleService.getVehicles(null, brand, null, null, null, minPrice, maxPrice, null, fuelType, null, null, bodyStyle);
+    viewModel.addAttribute("vehicles", vehicles);
+    return "show-search";
     }
 }

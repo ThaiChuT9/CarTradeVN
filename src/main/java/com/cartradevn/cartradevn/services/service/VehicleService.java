@@ -52,11 +52,16 @@ public class VehicleService {
         if (city != null) {
             vehicles = vehicles.stream().filter(v -> v.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
         }
-        if (brand != null && model != null) {
-            vehicles = vehicles.stream()
-                    .filter(v -> v.getBrand().equalsIgnoreCase(brand) && v.getModel().equalsIgnoreCase(model))
-                    .collect(Collectors.toList());
-        }
+        if (brand != null) {
+        vehicles = vehicles.stream()
+                .filter(v -> v.getBrand().equalsIgnoreCase(brand))
+                .collect(Collectors.toList());
+    }
+    if (model != null) {
+        vehicles = vehicles.stream()
+                .filter(v -> v.getModel().equalsIgnoreCase(model))
+                .collect(Collectors.toList());
+    }
         if (minPrice != null && maxPrice != null) {
             vehicles = vehicles.stream().filter(v -> v.getPrice() >= minPrice && v.getPrice() <= maxPrice)
                     .collect(Collectors.toList());
