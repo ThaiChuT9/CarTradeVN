@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.List;
 
 import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
@@ -309,5 +310,38 @@ public class WebController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/view-listings";
+    }
+
+    @GetMapping("/show-search")
+    public String showSearch(
+        @RequestParam(name = "brand", required = false) String brand,
+        @RequestParam(name = "model", required = false) String model,
+        @RequestParam(name = "fuelType", required = false) String fuelType,
+        @RequestParam(name = "priceRange", required = false) String priceRange,
+        Model viewModel
+    ) {
+        Double minPrice = null;
+        Double maxPrice = null;
+
+        if (priceRange != null) {
+            switch (priceRange) {
+                case "< $20.000":
+                    minPrice = 0.0;
+                    maxPrice = 20000.0;
+                    break;
+                case "$20k ~ $50k":
+                    minPrice = 20000.0;
+                    maxPrice = 50000.0;
+                    break;
+                case "> $50.000":
+                    minPrice = 50000.0;
+                    maxPrice = Double.MAX_VALUE;
+                    break;
+            }
+        }
+
+        List<VehicleDTO> vehicles = vehicleService.getVehicles(null, brand, null, null, model, minPrice, maxPrice, null, fuelType, null, null, null);
+        viewModel.addAttribute("vehicles", vehicles);
+        return "show-search";
     }
 }
