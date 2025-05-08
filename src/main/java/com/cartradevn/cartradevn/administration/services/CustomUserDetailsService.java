@@ -1,6 +1,7 @@
 package com.cartradevn.cartradevn.administration.services;
 
 import com.cartradevn.cartradevn.administration.entity.User;
+import com.cartradevn.cartradevn.administration.respository.UserRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.cartradevn.cartradevn.administration.respository.UserRepo;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService  {

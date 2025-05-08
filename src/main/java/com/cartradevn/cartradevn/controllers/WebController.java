@@ -1,9 +1,5 @@
 package com.cartradevn.cartradevn.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,16 +14,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.cartradevn.cartradevn.administration.Enum.UserRole;
 import com.cartradevn.cartradevn.administration.controller.UserResponseDTO;
 import com.cartradevn.cartradevn.administration.dto.UserUpdateDTO;
 import com.cartradevn.cartradevn.administration.entity.User;
 import com.cartradevn.cartradevn.administration.respository.UserRepo;
 import com.cartradevn.cartradevn.services.dto.VehicleDTO;
 import com.cartradevn.cartradevn.services.repository.VehicleRepo;
+import com.cartradevn.cartradevn.services.service.ImageService;
 import com.cartradevn.cartradevn.services.service.VehicleService;
 
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -36,13 +34,20 @@ public class WebController {
     private final PasswordEncoder passwordEncoder;
     private final VehicleRepo vehicleRepo;
     private final VehicleService vehicleService;
+    private final ImageService imageService;
 
     @Autowired
-    public WebController(UserRepo userRepo, PasswordEncoder passwordEncoder, VehicleRepo vehicleRepo, VehicleService vehicleService) {
+    public WebController(UserRepo userRepo, PasswordEncoder passwordEncoder, VehicleRepo vehicleRepo, VehicleService vehicleService, ImageService imageService) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
         this.vehicleRepo = vehicleRepo;
         this.vehicleService = vehicleService;
+        this.imageService = imageService;
+    }
+
+    @GetMapping({ "/", "/index-9" })
+    public String index(HttpSession session) {
+        return "index-9";
     }
 
     @GetMapping("/faq")
@@ -51,30 +56,11 @@ public class WebController {
     }
 
     @GetMapping("/login")
-    public String login(HttpSession session, Model model, 
-                       @RequestParam(required = false) String error,
-                       @RequestParam(required = false) String logout,
-                       @RequestParam(required = false) String registered,
-                       @RequestParam(required = false) String expired) {
+    public String login(HttpSession session) {
         // Nếu đã đăng nhập thì redirect về trang chủ
         if (session.getAttribute("user") != null) {
             return "redirect:/";
         }
-
-        // Xử lý các thông báo
-        if (error != null) {
-            model.addAttribute("error", error);
-        }
-        if (logout != null) {
-            model.addAttribute("message", "Bạn đã đăng xuất thành công");
-        }
-        if (registered != null) {
-            model.addAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập");
-        }
-        if (expired != null) {
-            model.addAttribute("error", "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại");
-        }
-
         return "login";
     }
 
@@ -119,7 +105,7 @@ public class WebController {
     }
 
     @GetMapping("/admin-profile")
-    public String profile(HttpSession session, Model model) {
+    public String adminProfile(HttpSession session, Model model) {
         return "redirect:/login";
     }
 
@@ -156,11 +142,13 @@ public class WebController {
     public String profile(Model model, HttpSession session) {
         try {
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                return "redirect:/login";
+            }
 
             User user = userRepo.findById(userSession.getId())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
-            // Add debug logging
             System.out.println("Found user: " + user.getUsername());
 
             model.addAttribute("user", user);
@@ -177,6 +165,10 @@ public class WebController {
             RedirectAttributes redirectAttributes) {
         try {
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                return "redirect:/login";
+            }
+
             User user = userRepo.findById(userSession.getId())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -202,48 +194,12 @@ public class WebController {
         return "redirect:/profile";
     }
 
-    @GetMapping({"/", "/index-9"})
-    public String index(Model model) {
-        try {
-            // Lấy danh sách xe mới
-            Page<VehicleDTO> newVehicles = vehicleService.getVehiclesByCondition(
-                "new", 
-                PageRequest.of(0, 8)
-            );
-            model.addAttribute("newVehicles", newVehicles.getContent());
-
-            // Lấy danh sách xe đã qua sử dụng
-            Page<VehicleDTO> usedVehicles = vehicleService.getVehiclesByCondition(
-                "used", 
-                PageRequest.of(0, 8)
-            );
-            model.addAttribute("usedVehicles", usedVehicles.getContent());
-
-            // Lấy danh sách xe theo từng loại body style
-            Map<String, List<VehicleDTO>> vehiclesByStyle = new HashMap<>();
-            String[] styles = {"TRUCK", "SEDAN", "COUPE", "CONVERTIBLE", "SUV", 
-                               "VAN", "HATCHBACK", "WAGON"};
-            
-            for (String style : styles) {
-                List<VehicleDTO> vehicles = vehicleService.getVehiclesByBodyStyle(style);
-                vehiclesByStyle.put(style.toLowerCase(), vehicles);
-            }
-            model.addAttribute("vehiclesByStyle", vehiclesByStyle);
-
-            // Thống kê
-            long totalVehicles = vehicleService.countTotalVehicles();
-            model.addAttribute("totalVehicles", totalVehicles);
-
-            return "index-9";
-        } catch (Exception e) {
-            model.addAttribute("error", "Error loading vehicles: " + e.getMessage());
-            return "index-9";
-        }
-    }
-
     @GetMapping("/add-listings")
     public String showAddListingForm(Model model, HttpSession session) {
         UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+        if (userSession == null) {
+            return "redirect:/login";
+        }
         return "add-listings";
     }
 
@@ -254,13 +210,20 @@ public class WebController {
             HttpSession session,
             RedirectAttributes redirectAttributes) {
         try {
-            // Get logged in user
             UserResponseDTO userSession = (UserResponseDTO) session.getAttribute("user");
+            if (userSession == null) {
+                redirectAttributes.addFlashAttribute("error", "Please login to add a listing");
+                return "redirect:/login";
+            }
 
-            // Set user ID
             vehicleDTO.setUserId(userSession.getId());
 
-            // Create vehicle
+            // Handle image uploads
+            if (images != null && images.length > 0) {
+                List<String> imageUrls = imageService.saveImages(images);
+                vehicleDTO.setImageUrl(String.join(",", imageUrls));
+            }
+
             VehicleDTO created = vehicleService.createVehicle(vehicleDTO);
             redirectAttributes.addFlashAttribute("success", "Vehicle added successfully");
             return "redirect:/my-listings";
@@ -368,30 +331,36 @@ public class WebController {
         return "redirect:/view-listings";
     }
 
-    @GetMapping("/vehicles/{id}")
-    public String viewVehicleDetails(@PathVariable Long id, Model model) {
-        try {
-            VehicleDTO vehicle = vehicleService.getVehicleById(id);
-            model.addAttribute("vehicle", vehicle);
+    @GetMapping("/show-search")
+    public String showSearch(
+        @RequestParam(name = "brand", required = false) String brand,
+        @RequestParam(name = "model", required = false) String model,
+        @RequestParam(name = "fuelType", required = false) String fuelType,
+        @RequestParam(name = "priceRange", required = false) String priceRange,
+        Model viewModel
+    ) {
+        Double minPrice = null;
+        Double maxPrice = null;
 
-            // Get seller information
-            User seller = userRepo.findById(vehicle.getUserId())
-                .orElseThrow(() -> new RuntimeException("Seller not found"));
-            model.addAttribute("seller", seller);
-
-            // Get related vehicles (same brand or category)
-            List<VehicleDTO> relatedVehicles = vehicleService.getRelatedVehicles(
-                vehicle.getBrand(), 
-                vehicle.getBodyStyle(),
-                id,  // exclude current vehicle
-                4    // limit
-            );
-            model.addAttribute("relatedVehicles", relatedVehicles);
-
-            return "inventory-page-single-v2";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "redirect:/";
+        if (priceRange != null) {
+            switch (priceRange) {
+                case "< $20.000":
+                    minPrice = 0.0;
+                    maxPrice = 20000.0;
+                    break;
+                case "$20k ~ $50k":
+                    minPrice = 20000.0;
+                    maxPrice = 50000.0;
+                    break;
+                case "> $50.000":
+                    minPrice = 50000.0;
+                    maxPrice = Double.MAX_VALUE;
+                    break;
+            }
         }
+
+        List<VehicleDTO> vehicles = vehicleService.getVehicles(null, brand, null, null, model, minPrice, maxPrice, null, fuelType, null, null, null);
+        viewModel.addAttribute("vehicles", vehicles);
+        return "show-search";
     }
 }

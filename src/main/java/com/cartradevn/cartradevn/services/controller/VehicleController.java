@@ -27,7 +27,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/vehicles")
+@RequestMapping("/api")
 public class VehicleController {
     private final VehicleService vehicleService;
     private final ImageService imageService;
@@ -38,12 +38,18 @@ public class VehicleController {
         this.imageService = imageService;
     }
 
-    @GetMapping("/{id}")
+    // Endpoint /api/cars để trả về danh sách tất cả xe
+    @GetMapping("/cars")
+    public ResponseEntity<List<VehicleDTO>> getAllVehiclesForFrontend() {
+        return ResponseEntity.ok(vehicleService.getAllVehicles());
+    }
+
+    @GetMapping("/vehicles/{id}")
     public ResponseEntity<VehicleDTO> getVehicleById(@PathVariable Long id) {
         return ResponseEntity.ok(vehicleService.getVehicleById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/vehicles/{id}")
     public ResponseEntity<VehicleDTO> updateVehicle(
             @PathVariable Long id,
             @Valid @RequestBody VehicleDTO vehicleDTO) {
@@ -69,18 +75,18 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.updateVehicle(id, vehicleDTO));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/vehicles/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
         vehicleService.deleteVehicle(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/all")
+    @GetMapping("/vehicles/all")
     public ResponseEntity<List<VehicleDTO>> getAllVehicles() {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
-    @GetMapping("/search")
+    @GetMapping("/vehicles/search")
     public ResponseEntity<List<VehicleDTO>> getVehicles(
             @RequestParam(required = false) String city,
             @RequestParam(required = false) String brand,
@@ -99,7 +105,7 @@ public class VehicleController {
                 condition, fuelType, mileage, transmission, bodyStyle));
     }
 
-    @PostMapping
+    @PostMapping("/vehicles")
     public ResponseEntity<VehicleDTO> createVehicle(
             @Valid @ModelAttribute VehicleDTO vehicleDTO,
             @RequestParam(value = "images", required = false) MultipartFile[] images,
@@ -135,7 +141,6 @@ public class VehicleController {
 
             // Handle image uploads
             if (images != null && images.length > 0) {
-                // Save images and get URLs
                 List<String> imageUrls = imageService.saveImages(images);
                 vehicleDTO.setImageUrl(String.join(",", imageUrls));
             }
